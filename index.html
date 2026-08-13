@@ -55,7 +55,7 @@
         }
         .main-logo {
             width: 100% !important;
-            max-width: 900px !important; /* 強制的に大きく拡大 */
+            max-width: 900px !important;
             height: auto !important;
             display: inline-block !important;
             filter: drop-shadow(0 0 20px rgba(255, 0, 85, 0.6));
@@ -74,7 +74,7 @@
             transform: rotate(-1deg);
         }
 
-        /* ----- A案のポップで可愛いカード型 ＋ B案のダークサイバー感の融合 ----- */
+        /* ----- A案のカード型 ＋ B案のダークサイバー感の融合 ----- */
         .pop-card {
             background-color: var(--card-bg);
             border: 4px solid var(--neon-cyan);
@@ -212,43 +212,20 @@
             box-shadow: 0 0 15px var(--neon-pink);
         }
 
-        /* ⑥ CONTACT */
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .contact-form input, .contact-form textarea {
+        /* ⑥ CONTACT（Googleフォーム埋め込み調整） */
+        .form-wrapper {
             width: 100%;
-            padding: 15px;
-            border: 3px solid var(--neon-cyan);
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: bold;
-            background-color: #000;
-            color: #fff;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
         }
-        .contact-form textarea {
-            height: 150px;
-            resize: vertical;
-        }
-        .submit-btn {
-            background-color: var(--neon-pink);
-            color: #fff;
-            font-size: 1.2rem;
-            font-weight: bold;
-            padding: 15px;
-            border: 3px solid #fff;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 5px 5px 0px var(--neon-cyan);
-            transition: 0.2s;
-        }
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 20px var(--neon-pink);
+        .form-wrapper iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 850px;
+            border: none;
+            border-radius: 12px;
+            background: #ffffff; /* フォーム内は読みやすいよう白背景 */
         }
 
         footer {
@@ -270,7 +247,7 @@
             <div class="hero-catch">身長153cmのこだわり全開コンビ🍓</div>
         </div>
 
-        <!-- ② ABOUT（A案のカード型 ＋ 日本語説明） -->
+        <!-- ② ABOUT -->
         <div class="pop-card">
             <div class="flex-row">
                 <div class="flex-half">
@@ -292,7 +269,7 @@
             </div>
         </div>
 
-        <!-- ③ MEMBER（ワイド配置） -->
+        <!-- ③ MEMBER -->
         <div class="pop-card">
             <h2>Member</h2>
             <div class="member-grid">
@@ -309,7 +286,7 @@
             </div>
         </div>
 
-        <!-- ⑤ PROJECT（ワイド配置） -->
+        <!-- ⑤ PROJECT -->
         <div class="pop-card">
             <h2>Project</h2>
             <p style="font-weight: bold; margin-bottom: 30px; font-size: 1.1rem; color: #fff;">
@@ -330,7 +307,7 @@
             </div>
         </div>
 
-        <!-- ④ TikTok & SNS（Instagramの「シェアされました」対策済み直接リンク） -->
+        <!-- ④ TikTok & SNS -->
         <div class="pop-card sns-container">
             <h2>TikTok & SNS</h2>
             <div style="margin: 30px 0;">
@@ -346,23 +323,21 @@
             </div>
             
             <div style="margin-top: 20px;">
-                <!-- シェア表示が出ないよう、余計なパラメータを削った純正のプロフィールURLに修正 -->
                 <a href="https://www.instagram.com/otakuno153" target="_blank" class="social-btn insta">
                     <i class="fab fa-instagram" style="color: #ff0055;"></i> Instagram公式アカウントを見る
                 </a>
             </div>
         </div>
 
-        <!-- ⑥ CONTACT -->
+        <!-- ⑥ CONTACT（Googleフォーム埋め込み） -->
         <div class="pop-card">
-            <h2 style="text-align: center; display: block; border: none;">Contact</h2>
-            <form action="https://formspree.io/f/at.the.beginning.jy@gmail.com" method="POST" class="contact-form">
-                <input type="text" name="name" required placeholder="お名前 / 貴社名">
-                <input type="email" name="email" required placeholder="メールアドレス">
-                <input type="text" name="subject" placeholder="お問い合わせ件名">
-                <textarea name="message" required placeholder="お問い合わせ内容をご自由にご記入ください"></textarea>
-                <button type="submit" class="submit-btn">送信する</button>
-            </form>
+            <h2 style="text-align: center; display: block; border: none; margin-bottom: 15px;">Contact</h2>
+            <p style="text-align: center; font-weight: bold; margin-bottom: 25px; color: #b0c4de; font-size: 1.05rem;">
+                出演のご依頼やお問い合わせは、以下のフォームよりお気軽にご連絡ください！
+            </p>
+            <div class="form-wrapper">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf1Qjd69R7o0KF9iFWCmh4IoY8Td0WILmN7-OLx4OoaeNWtLQ/viewform?embedded=true" width="640" height="850" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
+            </div>
         </div>
 
         <footer>
