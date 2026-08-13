@@ -10,11 +10,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #e0f7fa; /* 明るい水色 */
-            --main-pink: #ff4081; /* ポップなピンク */
-            --accent-yellow: #ffd54f;
-            --text-main: #263238;
-            --card-bg: #ffffff;
+            /* サイバーテーマのカラーパレット */
+            --bg-dark: #0d0d12;
+            --panel-bg: rgba(20, 20, 28, 0.85);
+            --neon-pink: #ff0055;
+            --neon-cyan: #00f0ff;
+            --text-main: #e0e6ed;
+            --text-muted: #8b949e;
         }
 
         * {
@@ -24,171 +26,232 @@
         }
 
         body {
-            /* アキバ系ポップな水色ドット背景 */
-            background-color: var(--bg-color);
-            background-image: radial-gradient(#b2ebf2 3px, transparent 3px);
-            background-size: 30px 30px;
+            background-color: var(--bg-dark);
+            /* デジタル空間風のグリッド（網目）背景 */
+            background-image: 
+                linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-attachment: fixed;
             color: var(--text-main);
-            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif;
             line-height: 1.8;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.08em;
         }
 
-        /* ワイドレイアウトの要（最大1200pxまで広がる） */
+        /* 画面を広く使うためのワイドコンテナ（最大1200px） */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
         }
 
-        /* ポップなカードデザイン（太枠とズラした影） */
-        .pop-card {
-            background-color: var(--card-bg);
-            border: 4px solid var(--text-main);
-            border-radius: 16px;
-            box-shadow: 8px 8px 0px var(--main-pink);
+        /* 近未来感のあるガラスパネル風デザイン */
+        .cyber-panel {
+            background: var(--panel-bg);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-left: 4px solid var(--neon-pink); /* 左側にピンクのアクセントライン */
             padding: 40px;
             margin-bottom: 60px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* パネルの装飾（右上のサイバーな角） */
+        .cyber-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            border-top: 2px solid var(--neon-cyan);
+            border-right: 2px solid var(--neon-cyan);
         }
 
         h2 {
-            font-size: 2rem;
-            color: var(--main-pink);
+            font-size: 2.2rem;
+            color: #ffffff;
             margin-bottom: 30px;
             text-transform: uppercase;
-            text-shadow: 2px 2px 0px var(--accent-yellow);
-            border-bottom: 4px dashed var(--main-pink);
+            letter-spacing: 0.15em;
             display: inline-block;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+            border-bottom: 2px solid var(--neon-cyan);
             padding-bottom: 5px;
         }
 
-        /* 横並びレイアウト用クラス */
-        .flex-row {
-            display: flex;
-            flex-wrap: wrap;
+        /* 2カラムレイアウト用（横に広く配置） */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 40px;
             align-items: center;
         }
-        
-        .flex-row.reverse {
-            flex-direction: row-reverse;
-        }
 
-        .flex-half {
-            flex: 1 1 300px;
-            text-align: left; /* テキストは読みやすく左揃え */
-        }
-
-        /* ① HERO（ファーストビュー） */
+        /* ① HERO */
         .hero {
             text-align: center;
             padding: 60px 20px;
             margin-bottom: 40px;
+            position: relative;
         }
         .main-logo {
             width: 100%;
             max-width: 600px;
             height: auto;
-            filter: drop-shadow(4px 4px 0px var(--main-pink));
+            filter: drop-shadow(0 0 15px rgba(255, 0, 85, 0.6));
+            animation: pulse-glow 3s infinite alternate;
+        }
+        @keyframes pulse-glow {
+            0% { filter: drop-shadow(0 0 10px rgba(255, 0, 85, 0.4)); }
+            100% { filter: drop-shadow(0 0 25px rgba(255, 0, 85, 0.8)); }
         }
         .hero-catch {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: bold;
-            background-color: var(--accent-yellow);
-            color: var(--text-main);
-            padding: 10px 30px;
-            border: 3px solid var(--text-main);
-            border-radius: 50px;
+            color: var(--neon-cyan);
+            border: 1px solid var(--neon-cyan);
+            background: rgba(0, 240, 255, 0.1);
+            padding: 12px 30px;
             display: inline-block;
-            margin-top: 20px;
-            transform: rotate(-2deg);
+            margin-top: 25px;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+            letter-spacing: 0.1em;
         }
 
         /* ② ABOUT */
         .about-text {
-            font-size: 1.1rem;
-            font-weight: bold;
-            background: #fff;
+            font-size: 1.05rem;
+            color: var(--text-main);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .shrine-box {
+            background: linear-gradient(135deg, rgba(255,0,85,0.1) 0%, rgba(0,0,0,0) 100%);
+            border: 1px solid var(--neon-pink);
             padding: 30px;
-            border: 3px solid #4fc3f7;
-            border-radius: 12px;
-            box-shadow: 6px 6px 0px #4fc3f7;
+            text-align: center;
+            box-shadow: inset 0 0 20px rgba(255, 0, 85, 0.1);
+        }
+        .shrine-box h3 {
+            color: var(--neon-pink);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            text-shadow: 0 0 10px rgba(255,0,85,0.5);
         }
 
         /* ③ MEMBER */
-        .member-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
         .member-card {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 20px;
             text-align: center;
+            transition: all 0.3s ease;
+        }
+        .member-card:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+            transform: translateY(-5px);
         }
         .member-img {
             width: 100%;
             aspect-ratio: 3/4;
             object-fit: cover;
-            border: 4px solid var(--text-main);
-            border-radius: 16px;
-            box-shadow: 6px 6px 0px var(--accent-yellow);
+            border-bottom: 3px solid var(--neon-pink);
             margin-bottom: 20px;
-            transition: transform 0.2s;
-        }
-        .member-img:hover {
-            transform: translateY(-5px);
+            filter: contrast(1.1);
         }
         .member-name {
-            font-size: 1.5rem;
-            font-weight: 900;
-            background-color: var(--main-pink);
+            font-size: 1.6rem;
+            font-weight: bold;
             color: #fff;
-            padding: 5px 15px;
-            border-radius: 30px;
-            display: inline-block;
+            letter-spacing: 0.1em;
+        }
+        .member-role {
+            color: var(--neon-cyan);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        /* ⑤ PROJECT */
+        .project-item {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+        }
+        .project-item:hover {
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
+        }
+        .project-item img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            display: block;
+            opacity: 0.8;
+            transition: 0.3s;
+        }
+        .project-item:hover img {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        .project-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.8);
+            padding: 15px;
+            border-top: 2px solid var(--neon-pink);
+        }
+        .project-title {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .project-sub {
+            color: var(--neon-cyan);
+            font-size: 0.85rem;
         }
 
         /* ④ TikTok & SNS */
         .sns-container {
             text-align: center;
         }
-        .tiktok-btn {
+        .cyber-btn {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background-color: #000;
-            color: #fff;
-            font-size: 1.2rem;
+            background: transparent;
+            color: var(--neon-cyan);
+            font-size: 1.1rem;
             font-weight: bold;
             padding: 15px 40px;
-            border-radius: 50px;
+            border: 2px solid var(--neon-cyan);
             text-decoration: none;
-            border: 3px solid var(--accent-yellow);
-            box-shadow: 5px 5px 0px var(--main-pink);
-            transition: 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
             margin-top: 20px;
+            position: relative;
+            overflow: hidden;
         }
-        .tiktok-btn:hover {
-            transform: scale(1.05);
+        .cyber-btn:hover {
+            background: var(--neon-cyan);
+            color: #000;
+            box-shadow: 0 0 20px var(--neon-cyan);
         }
-
-        /* ⑤ PROJECT */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+        .cyber-btn.pink {
+            color: var(--neon-pink);
+            border-color: var(--neon-pink);
         }
-        .project-item img {
-            width: 100%;
-            aspect-ratio: 1;
-            object-fit: cover;
-            border: 3px solid var(--text-main);
-            border-radius: 12px;
-            box-shadow: 5px 5px 0px #4fc3f7;
-            margin-bottom: 15px;
-        }
-        .project-title {
-            font-size: 1.2rem;
-            font-weight: bold;
+        .cyber-btn.pink:hover {
+            background: var(--neon-pink);
+            color: #fff;
+            box-shadow: 0 0 20px var(--neon-pink);
         }
 
         /* ⑥ CONTACT */
@@ -202,30 +265,44 @@
         .contact-form input, .contact-form textarea {
             width: 100%;
             padding: 15px;
-            border: 3px solid var(--text-main);
-            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
             font-size: 1rem;
-            font-weight: bold;
-            background-color: #fafafa;
+            transition: 0.3s;
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
         }
         .contact-form textarea {
             height: 150px;
             resize: vertical;
         }
         .submit-btn {
-            background-color: var(--main-pink);
+            background: var(--neon-pink);
             color: #fff;
             font-size: 1.2rem;
             font-weight: bold;
             padding: 15px;
-            border: 3px solid var(--text-main);
-            border-radius: 50px;
+            border: none;
             cursor: pointer;
-            box-shadow: 5px 5px 0px var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
         }
         .submit-btn:hover {
-            transform: translateY(2px);
-            box-shadow: 3px 3px 0px var(--text-main);
+            background: #ff3377;
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.6);
+        }
+
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 20px;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
     </style>
 </head>
@@ -237,101 +314,116 @@
         <div class="hero">
             <img src="./logo.png.PNG" alt="オタクのいちごさん" class="main-logo">
             <br>
-            <div class="hero-catch">身長153cmのこだわり全開コンビ🍓</div>
+            <div class="hero-catch">TARGET: 身長153cmのこだわり全開コンビ🍓</div>
         </div>
 
-        <!-- ② ABOUT（横幅を活かした配置） -->
-        <div class="pop-card">
-            <div class="flex-row">
-                <div class="flex-half">
-                    <h2>About Us</h2>
-                    <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 20px;">
-                        【ユニット説明：オタクのいちごさん】
+        <!-- ② ABOUT（2カラムワイド配置） -->
+        <div class="cyber-panel">
+            <h2>SYSTEM_INFO // About Us</h2>
+            <div class="grid-2col">
+                <div>
+                    <p style="color: var(--neon-pink); font-weight: bold; margin-bottom: 15px; font-size: 1.1rem;">
+                        [UNIT_DATA: オタクのいちごさん]
                     </p>
                     <p class="about-text">
                         身長153cmの（＝1-5-3で「いちご」🍓）通山栞と米沢のぞみによる、こだわりが強すぎる女優コンビ🎬<br><br>
                         プロレスとアイドル、それぞれの世界を愛してやまないオタク全開の2人が、人生のスケジュールを全力で駆け抜けるシュールでコミカルなショートドラマをお届け中！
                     </p>
                 </div>
-                <div class="flex-half" style="text-align: center;">
-                    <div style="background-color: #fff59d; padding: 30px; border: 4px solid #263238; border-radius: 16px; transform: rotate(3deg); box-shadow: 6px 6px 0px #ff4081;">
-                        <h3 style="color: #ff4081; font-size: 1.5rem; margin-bottom: 10px;">⛩️ いちご一会オタク部 ⛩️</h3>
-                        <p style="font-weight: bold;">TikTokメインで活動中！<br>部活動への入部は、TikTokギフトの「ハートミー」でお待ちしています❤️</p>
+                <div class="shrine-box">
+                    <h3>⛩️ いちご一会オタク部 ⛩️</h3>
+                    <p style="color: var(--text-main); font-size: 0.95rem;">
+                        TikTokメインで活動中！<br>部活動への入部は、TikTokギフトの<br><span style="color: var(--neon-pink); font-weight:bold; font-size: 1.2rem;">「ハートミー」</span>でお待ちしています。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ③ MEMBER（2カラムワイド配置） -->
+        <div class="cyber-panel">
+            <h2>CHARACTER_SELECT // Member</h2>
+            <div class="grid-2col">
+                <div class="member-card">
+                    <img src="./toriyama.png.JPG" alt="通山 栞" class="member-img">
+                    <div class="member-name">通山 栞</div>
+                    <div class="member-role">Shiori Toriyama</div>
+                </div>
+                <div class="member-card">
+                    <img src="./yonezawa.png.jpg" alt="米沢 のぞみ" class="member-img">
+                    <div class="member-name">米沢 のぞみ</div>
+                    <div class="member-role">Nozomi Yonezawa</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ⑤ PROJECT（2カラムワイド配置） -->
+        <div class="cyber-panel">
+            <h2>ARCHIVE // Project</h2>
+            <p style="color: var(--text-muted); margin-bottom: 30px;">
+                <span style="color: var(--neon-cyan);">▶ 80年代アイドルプロジェクト！「恋するオルゴール」</span><br>
+                あの頃の輝きとトキメキを今に復刻！懐かしくも新しい80年代王道アイドルサウンド。
+            </p>
+            <div class="grid-2col">
+                <div class="project-item">
+                    <img src="./hoshikuzu.png.PNG" alt="星屑パスポート">
+                    <div class="project-info">
+                        <div class="project-title">『星屑パスポート』</div>
+                        <div class="project-sub">TRACK_01: デビュー曲</div>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <img src="./manatsu.jpg.PNG" alt="真夏のテレフォン">
+                    <div class="project-info">
+                        <div class="project-title">『真夏のテレフォン』</div>
+                        <div class="project-sub">TRACK_02: 2nd Single</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ③ MEMBER（大きく並べるワイド配置） -->
-        <div class="pop-card">
-            <h2>Member</h2>
-            <div class="member-grid">
-                <div class="member-card">
-                    <img src="./toriyama.png.JPG" alt="通山 栞" class="member-img">
-                    <div class="member-name">通山 栞</div>
-                    <p style="margin-top: 10px; font-weight: bold;">Shiori Toriyama</p>
-                </div>
-                <div class="member-card">
-                    <img src="./yonezawa.png.jpg" alt="米沢 のぞみ" class="member-img">
-                    <div class="member-name">米沢 のぞみ</div>
-                    <p style="margin-top: 10px; font-weight: bold;">Nozomi Yonezawa</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- ⑤ PROJECT（ワイド配置） -->
-        <div class="pop-card">
-            <h2>Project</h2>
-            <p style="font-weight: bold; margin-bottom: 30px; font-size: 1.1rem;">
-                🎤 80年代アイドルプロジェクト！「恋するオルゴール」<br>
-                あの頃の輝きとトキメキを今に復刻！懐かしくも新しい80年代王道アイドルサウンド。
-            </p>
-            <div class="project-grid">
-                <div class="project-item">
-                    <img src="./hoshikuzu.png.PNG" alt="星屑パスポート">
-                    <div class="project-title">『星屑パスポート』</div>
-                    <p>デビュー曲</p>
-                </div>
-                <div class="project-item">
-                    <img src="./manatsu.jpg.PNG" alt="真夏のテレフォン">
-                    <div class="project-title">『真夏のテレフォン』</div>
-                    <p>2nd Single</p>
-                </div>
-            </div>
-        </div>
-
         <!-- ④ TikTok & SNS -->
-        <div class="pop-card sns-container">
-            <h2>TikTok & SNS</h2>
-            <div style="margin: 30px 0;">
+        <div class="cyber-panel sns-container">
+            <h2>NETWORK // TikTok & SNS</h2>
+            
+            <div style="margin: 30px 0; background: rgba(0,0,0,0.5); padding: 20px; border: 1px solid rgba(255,255,255,0.1);">
                 <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@otakuno153" data-unique-id="otakuno153" data-embed-type="creator" style="max-width: 100%; min-width: 280px; margin: 0 auto;">
                     <section><a target="_blank" href="https://www.tiktok.com/@otakuno153?refer=creator_embed">@otakuno153</a></section>
                 </blockquote>
             </div>
-            <a href="https://www.tiktok.com/@otakuno153?_r=1&_t=ZS-98qgNrLS7ID" target="_blank" class="tiktok-btn">
-                <i class="fab fa-tiktok"></i> アプリで見てハートミーを送る❤️
-            </a>
-            <div style="margin-top: 30px;">
-                <a href="https://www.instagram.com/otakuno153?igsh=YmMxdm55OWVvODhy&utm_source=qr" target="_blank" style="color: #e1306c; font-weight: bold; text-decoration: none; font-size: 1.2rem;">
-                    <i class="fab fa-instagram"></i> Instagramはこちら
+            
+            <div>
+                <a href="https://www.tiktok.com/@otakuno153?_r=1&_t=ZS-98qgNrLS7ID" target="_blank" class="cyber-btn">
+                    <i class="fab fa-tiktok"></i> ACCESS TikTok
+                </a>
+            </div>
+            <div style="margin-top: 20px;">
+                <a href="https://www.instagram.com/otakuno153?igsh=YmMxdm55OWVvODhy&utm_source=qr" target="_blank" class="cyber-btn pink">
+                    <i class="fab fa-instagram"></i> ACCESS Instagram
                 </a>
             </div>
         </div>
 
         <!-- ⑥ CONTACT -->
-        <div class="pop-card">
-            <h2 style="text-align: center; display: block; border: none;">Contact</h2>
+        <div class="cyber-panel">
+            <h2 style="text-align: center; display: block; border: none; margin-bottom: 40px;">COMMUNICATION // Contact</h2>
             <form action="https://formspree.io/f/at.the.beginning.jy@gmail.com" method="POST" class="contact-form">
-                <input type="text" name="name" required placeholder="お名前 / 貴社名">
-                <input type="email" name="email" required placeholder="メールアドレス">
-                <input type="text" name="subject" placeholder="お問い合わせ件名">
-                <textarea name="message" required placeholder="お問い合わせ内容をご自由にご記入ください"></textarea>
-                <button type="submit" class="submit-btn">送信する</button>
+                <input type="text" name="name" required placeholder="NAME / COMPANY">
+                <input type="email" name="email" required placeholder="E-MAIL ADDRESS">
+                <input type="text" name="subject" placeholder="SUBJECT">
+                <textarea name="message" required placeholder="MESSAGE..."></textarea>
+                <button type="submit" class="submit-btn">SEND MESSAGE</button>
             </form>
         </div>
+
+        <footer>
+            &copy; <span id="year"></span> オタクのいちごさん SYSTEM. All Rights Reserved.
+        </footer>
 
     </div>
 
     <script async src="https://www.tiktok.com/embed.js"></script>
+    <script>
+        document.getElementById("year").innerText = new Date().getFullYear();
+    </script>
 </body>
 </html>
