@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- キャッシュを自動的に無効化し、常に最新状態を表示させる設定 -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
@@ -11,13 +10,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-dark: #10041a;
-            --card-bg: rgba(28, 12, 45, 0.92);
-            --pink-main: #ff1493;
-            --pink-bright: #ff0055;
-            --gold-shrine: #ffd700;
-            --text-white: #ffffff;
-            --text-sub: #e2d9f3;
+            --bg-light: #fff0f5;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --pink-primary: #ff3385;
+            --pink-soft: #ff80bf;
+            --pink-dark: #cc0052;
+            --gold-accent: #ffb700;
+            --text-dark: #331020;
+            --text-sub: #66334c;
         }
 
         * {
@@ -27,85 +27,46 @@
         }
 
         body {
-            background-color: var(--bg-dark);
+            /* 暗いホラー感を排除し、明るくポップで可愛いピンク×ホワイト背景に変更 */
+            background-color: var(--bg-light);
             background-image: 
-                radial-gradient(circle at 20% 20%, rgba(255, 20, 147, 0.22) 0%, transparent 40%),
-                radial-gradient(circle at 80% 80%, rgba(0, 242, 254, 0.18) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.08) 0%, transparent 60%);
+                radial-gradient(circle at 10% 10%, #ffe6ee 0%, transparent 40%),
+                radial-gradient(circle at 90% 90%, #ffd1dc 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, #ffffff 0%, transparent 60%);
             background-attachment: fixed;
-            color: var(--text-white);
+            color: var(--text-dark);
             font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
             line-height: 1.8;
             letter-spacing: 0.05em;
             padding-bottom: 60px;
-            position: relative;
-            overflow-x: hidden;
         }
 
-        /* 画面左右の寂しさを消すサイド装飾 */
-        .side-decorations {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            display: none;
-        }
-
-        @media (min-width: 850px) {
-            .side-decorations {
-                display: block;
-            }
-        }
-
-        .side-item {
-            position: absolute;
-            font-size: 1.8rem;
-            opacity: 0.5;
-            animation: floatSide 3.5s ease-in-out infinite alternate;
-        }
-
-        .side-item.left-1 { top: 18%; left: 6%; animation-delay: 0s; }
-        .side-item.left-2 { top: 48%; left: 4%; animation-delay: 1.2s; font-size: 2.3rem; }
-        .side-item.left-3 { top: 78%; left: 7%; animation-delay: 0.6s; }
-        .side-item.right-1 { top: 22%; right: 6%; animation-delay: 0.8s; font-size: 2.3rem; }
-        .side-item.right-2 { top: 52%; right: 4%; animation-delay: 0.3s; }
-        .side-item.right-3 { top: 82%; right: 8%; animation-delay: 1.5s; }
-
-        @keyframes floatSide {
-            0% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 4px rgba(255,20,147,0.6)); }
-            100% { transform: translateY(-15px) scale(1.15); filter: drop-shadow(0 0 12px rgba(255,215,0,0.9)); }
-        }
-
+        /* 画面全体をゆったり広く使うためのレイアウト設定（幅を1000pxに拡大） */
         .container {
-            max-width: 680px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 25px 15px;
-            position: relative;
-            z-index: 1;
+            padding: 30px 20px;
         }
 
         section {
             background: var(--card-bg);
-            border-radius: 22px;
-            padding: 35px 22px;
-            margin-bottom: 28px;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
-            border: 2px solid rgba(255, 20, 147, 0.35);
+            border-radius: 24px;
+            padding: 40px 30px;
+            margin-bottom: 35px;
+            box-shadow: 0 10px 30px rgba(255, 51, 133, 0.12);
+            border: 2px solid #ffccd5;
             text-align: center;
         }
 
         h2 {
-            font-size: 1.35rem;
-            color: #ffffff;
-            margin-bottom: 22px;
+            font-size: 1.6rem;
+            color: var(--pink-dark);
+            margin-bottom: 28px;
             position: relative;
             display: inline-block;
             padding-bottom: 8px;
             letter-spacing: 0.08em;
-            text-shadow: 0 0 12px rgba(255, 20, 147, 0.9);
+            font-weight: 800;
         }
 
         h2::after {
@@ -114,106 +75,107 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--pink-main), var(--gold-shrine));
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--pink-primary), var(--gold-accent));
             border-radius: 2px;
         }
 
         /* ① HERO */
         .hero {
-            background: linear-gradient(180deg, rgba(255, 0, 85, 0.35) 0%, var(--card-bg) 100%);
-            padding: 40px 20px 30px 20px;
-            border: 2px solid var(--pink-main);
-            box-shadow: 0 15px 45px rgba(255, 0, 85, 0.35);
+            background: linear-gradient(135deg, #fff0f5 0%, #ffe0eb 100%);
+            padding: 50px 20px 40px 20px;
+            border: 3px solid #ff99c2;
+            box-shadow: 0 15px 35px rgba(255, 51, 133, 0.15);
         }
 
         .main-logo {
             width: 100%;
-            max-width: 360px;
+            max-width: 480px;
             height: auto;
             display: block;
-            margin: 0 auto 20px auto;
-            filter: drop-shadow(0 0 18px rgba(255, 20, 147, 0.8));
-            border-radius: 14px;
+            margin: 0 auto 25px auto;
+            filter: drop-shadow(0 5px 15px rgba(255, 51, 133, 0.2));
+            border-radius: 16px;
         }
 
         .hero-catch {
-            font-size: 1rem;
+            font-size: 1.15rem;
             font-weight: bold;
             color: #fff;
-            background: linear-gradient(90deg, var(--pink-bright), var(--pink-main));
-            padding: 9px 22px;
-            border-radius: 25px;
+            background: linear-gradient(90deg, var(--pink-primary), var(--pink-soft));
+            padding: 12px 30px;
+            border-radius: 30px;
             display: inline-block;
-            box-shadow: 0 4px 15px rgba(255, 0, 85, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 5px 20px rgba(255, 51, 133, 0.3);
         }
 
         /* ② ABOUT */
         .concept-box {
-            background: rgba(0, 0, 0, 0.45);
-            border-radius: 16px;
-            padding: 22px 18px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: #fff9fb;
+            border-radius: 20px;
+            padding: 30px 25px;
+            border: 1.5px solid #ffccd5;
             text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .concept-text {
-            font-size: 0.93rem;
-            color: var(--text-sub);
+            font-size: 1.02rem;
+            color: var(--text-dark);
             white-space: pre-wrap;
-            line-height: 1.9;
-        }
-
-        .shrine-badge-box {
-            margin-top: 22px;
-            background: linear-gradient(135deg, rgba(214, 40, 40, 0.4) 0%, rgba(30, 10, 40, 0.85) 100%);
-            border: 2px solid var(--gold-shrine);
-            border-radius: 16px;
-            padding: 20px 15px;
-            text-align: center;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.25);
-        }
-
-        .shrine-title {
-            color: var(--gold-shrine);
-            font-weight: bold;
-            font-size: 1.05rem;
-            margin-bottom: 6px;
-            letter-spacing: 0.05em;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
-        }
-
-        .shrine-desc {
-            font-size: 0.85rem;
-            color: #ffffff;
+            line-height: 2;
             font-weight: 500;
         }
 
-        /* ③ MEMBER */
+        .shrine-badge-box {
+            margin-top: 25px;
+            background: linear-gradient(135deg, #fff5e6 0%, #ffebf0 100%);
+            border: 2px solid var(--gold-accent);
+            border-radius: 18px;
+            padding: 22px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(255, 183, 0, 0.2);
+        }
+
+        .shrine-title {
+            color: #d97700;
+            font-weight: bold;
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+
+        .shrine-desc {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            font-weight: bold;
+        }
+
+        /* ③ MEMBER（幅を広げてゆったり配置） */
         .member-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-top: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 15px;
         }
 
         .member-card {
-            background: rgba(255, 255, 255, 0.06);
-            border-radius: 18px;
-            padding: 14px;
-            border: 1px solid rgba(255, 20, 147, 0.35);
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 20px;
+            border: 2px solid #ffccd5;
+            box-shadow: 0 8px 20px rgba(255, 51, 133, 0.08);
         }
 
         .member-img-wrap {
             width: 100%;
             aspect-ratio: 3 / 4;
-            border-radius: 14px;
+            border-radius: 16px;
             overflow: hidden;
-            margin-bottom: 10px;
-            background-color: #1a0a2a;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 15px;
+            background-color: #fff0f5;
+            border: 1px solid #ffb3c6;
         }
 
         .member-img-wrap img {
@@ -225,29 +187,33 @@
         }
 
         .member-name {
-            font-size: 1rem;
+            font-size: 1.25rem;
             font-weight: bold;
-            color: var(--text-white);
+            color: var(--text-dark);
         }
 
         .member-role {
-            font-size: 0.78rem;
-            color: var(--pink-main);
-            margin-top: 2px;
+            font-size: 0.88rem;
+            color: var(--pink-primary);
+            font-weight: bold;
+            margin-top: 4px;
         }
 
         /* ④ TikTok & SNS */
         .tiktok-box {
-            background: rgba(0, 0, 0, 0.45);
-            border-radius: 18px;
-            padding: 20px 14px;
-            border: 1.5px solid var(--pink-main);
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 25px;
+            border: 2px solid var(--pink-soft);
+            box-shadow: 0 8px 20px rgba(255, 51, 133, 0.08);
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         .tiktok-embed-container {
             display: flex;
             justify-content: center;
-            margin: 18px 0;
+            margin: 20px 0;
             min-height: 500px;
         }
 
@@ -255,154 +221,155 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            background: linear-gradient(45deg, var(--pink-bright), var(--pink-main));
+            gap: 10px;
+            background: linear-gradient(45deg, var(--pink-primary), #ff0055);
             color: #fff;
             text-decoration: none;
             font-weight: bold;
-            padding: 14px 20px;
-            border-radius: 30px;
-            font-size: 0.98rem;
-            box-shadow: 0 5px 20px rgba(255, 0, 85, 0.5);
-            margin-top: 12px;
+            padding: 16px 25px;
+            border-radius: 35px;
+            font-size: 1.05rem;
+            box-shadow: 0 6px 20px rgba(255, 51, 133, 0.35);
+            margin-top: 15px;
         }
 
         .sns-icons {
             display: flex;
             justify-content: center;
-            margin-top: 18px;
+            margin-top: 22px;
         }
 
         .sns-btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 10px 22px;
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--text-white);
+            gap: 10px;
+            padding: 12px 28px;
+            background: #ffffff;
+            color: var(--pink-dark);
             text-decoration: none;
-            border-radius: 20px;
-            font-size: 0.88rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            border: 2px solid #ffb3c6;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
-        /* ⑤ PROJECT */
+        /* ⑤ PROJECT（全体に広げて大きなカード配置） */
         .project-badge {
-            background: var(--pink-bright);
+            background: var(--pink-primary);
             color: #fff;
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             font-weight: bold;
-            padding: 4px 14px;
-            border-radius: 15px;
+            padding: 6px 18px;
+            border-radius: 20px;
             display: inline-block;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             letter-spacing: 0.1em;
         }
 
         .project-title {
-            font-size: 1.25rem;
-            color: var(--gold-shrine);
-            margin-bottom: 12px;
+            font-size: 1.45rem;
+            color: var(--pink-dark);
+            margin-bottom: 15px;
             font-weight: bold;
             line-height: 1.4;
         }
 
         .music-cards {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-top: 18px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
         }
 
         .music-card {
-            background: rgba(0, 0, 0, 0.45);
-            border-radius: 16px;
-            padding: 12px;
-            border: 1px solid rgba(255, 215, 0, 0.4);
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 18px;
+            border: 2px solid #ffccd5;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
         }
 
         .music-card img {
             width: 100%;
             aspect-ratio: 1 / 1;
-            border-radius: 10px;
+            border-radius: 14px;
             object-fit: cover;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             display: block;
         }
 
         .music-title {
-            font-size: 0.88rem;
+            font-size: 1.05rem;
             font-weight: bold;
-            color: var(--text-white);
+            color: var(--text-dark);
         }
 
         .music-sub {
-            font-size: 0.72rem;
-            color: var(--pink-main);
-            margin-top: 2px;
+            font-size: 0.82rem;
+            color: var(--pink-primary);
+            font-weight: bold;
+            margin-top: 4px;
         }
 
         /* ⑥ CONTACT */
+        .contact-box {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
         .form-group {
             text-align: left;
-            margin-bottom: 14px;
+            margin-bottom: 18px;
         }
 
         .form-group label {
             display: block;
-            font-size: 0.82rem;
+            font-size: 0.9rem;
             color: var(--text-sub);
-            margin-bottom: 5px;
+            margin-bottom: 6px;
+            font-weight: bold;
         }
 
         .form-group input, .form-group textarea {
             width: 100%;
-            padding: 12px 14px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 20, 147, 0.3);
-            background: rgba(0, 0, 0, 0.5);
-            color: #fff;
-            font-size: 0.9rem;
+            padding: 14px 16px;
+            border-radius: 14px;
+            border: 2px solid #ffccd5;
+            background: #ffffff;
+            color: var(--text-dark);
+            font-size: 0.95rem;
         }
 
         .form-group textarea {
-            height: 110px;
+            height: 130px;
             resize: vertical;
         }
 
         .btn-submit {
             width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, var(--pink-main) 0%, var(--pink-bright) 100%);
+            padding: 16px;
+            background: linear-gradient(135deg, var(--pink-primary) 0%, #ff0055 100%);
             color: #fff;
             border: none;
-            border-radius: 30px;
+            border-radius: 35px;
             font-weight: bold;
-            font-size: 1rem;
+            font-size: 1.1rem;
             cursor: pointer;
-            box-shadow: 0 5px 20px rgba(255, 0, 85, 0.5);
-            margin-top: 8px;
+            box-shadow: 0 6px 20px rgba(255, 51, 133, 0.35);
+            margin-top: 10px;
         }
 
         footer {
             text-align: center;
-            font-size: 0.78rem;
+            font-size: 0.85rem;
             color: var(--text-sub);
-            margin-top: 30px;
+            margin-top: 35px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-
-    <!-- 左右の寂しさを消す背景装飾 -->
-    <div class="side-decorations">
-        <div class="side-item left-1">🍓</div>
-        <div class="side-item left-2">✨</div>
-        <div class="side-item left-3">⛩️</div>
-        <div class="side-item right-1">🍓</div>
-        <div class="side-item right-2">✨</div>
-        <div class="side-item right-3">💖</div>
-    </div>
 
     <div class="container">
 
@@ -456,7 +423,7 @@
             <h2>OFFICIAL TikTok & SNS</h2>
             
             <div class="tiktok-box">
-                <p style="font-size: 0.9rem; color: #ffee00; font-weight: bold; margin-bottom: 8px;">
+                <p style="font-size: 1rem; color: var(--pink-dark); font-weight: bold; margin-bottom: 10px;">
                     <i class="fab fa-tiktok"></i> TikTokでショートドラマ配信中！
                 </p>
 
@@ -475,7 +442,7 @@
 
             <div class="sns-icons">
                 <a href="https://www.instagram.com/otakuno153?igsh=YmMxdm55OWVvODhy&utm_source=qr" class="sns-btn" target="_blank">
-                    <i class="fab fa-instagram" style="color: #ff1493;"></i> Instagram
+                    <i class="fab fa-instagram" style="color: #e1306c;"></i> Instagramを見る
                 </a>
             </div>
         </section>
@@ -485,7 +452,7 @@
             <span class="project-badge">PROJECT #01</span>
             <div class="project-title">80年代アイドルプロジェクト！<br>「恋するオルゴール」</div>
             
-            <p style="font-size: 0.88rem; color: var(--text-sub);">
+            <p style="font-size: 0.95rem; color: var(--text-sub); font-weight: 500;">
                 あの頃の輝きとトキメキを今に復刻！<br>懐かしくも新しい80年代王道アイドルサウンドをお届けします。
             </p>
 
@@ -507,29 +474,31 @@
         <section id="contact">
             <h2>CONTACT</h2>
             
-            <p style="font-size: 0.85rem; color: var(--text-sub); margin-bottom: 18px;">
-                出演依頼、取材、各種お仕事のご相談・お問合せは<br>以下のフォームよりお気軽にご連絡ください。
-            </p>
+            <div class="contact-box">
+                <p style="font-size: 0.9rem; color: var(--text-sub); margin-bottom: 20px; font-weight: 500;">
+                    出演依頼、取材、各種お仕事のご相談・お問合せは<br>以下のフォームよりお気軽にご連絡ください。
+                </p>
 
-            <form action="https://formspree.io/f/at.the.beginning.jy@gmail.com" method="POST">
-                <div class="form-group">
-                    <label>お名前 / 貴社名 *</label>
-                    <input type="text" name="name" required placeholder="例：山田 太郎">
-                </div>
-                <div class="form-group">
-                    <label>メールアドレス *</label>
-                    <input type="email" name="email" required placeholder="example@example.com">
-                </div>
-                <div class="form-group">
-                    <label>お問い合わせ件名</label>
-                    <input type="text" name="subject" placeholder="例：イベント出演依頼について">
-                </div>
-                <div class="form-group">
-                    <label>お問い合わせ内容 *</label>
-                    <textarea name="message" required placeholder="ご自由にご記入ください"></textarea>
-                </div>
-                <button type="submit" class="btn-submit">送信する</button>
-            </form>
+                <form action="https://formspree.io/f/at.the.beginning.jy@gmail.com" method="POST">
+                    <div class="form-group">
+                        <label>お名前 / 貴社名 *</label>
+                        <input type="text" name="name" required placeholder="例：山田 太郎">
+                    </div>
+                    <div class="form-group">
+                        <label>メールアドレス *</label>
+                        <input type="email" name="email" required placeholder="example@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>お問い合わせ件名</label>
+                        <input type="text" name="subject" placeholder="例：イベント出演依頼について">
+                    </div>
+                    <div class="form-group">
+                        <label>お問い合わせ内容 *</label>
+                        <textarea name="message" required placeholder="ご自由にご記入ください"></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">送信する</button>
+                </form>
+            </div>
         </section>
 
         <footer>
