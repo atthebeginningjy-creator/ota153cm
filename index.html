@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>オタクのいちごさん Official Site</title>
+    <title>オタクのいちごさん🍓 Official Site</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-dark: #120917;
-            --bg-card: rgba(35, 20, 48, 0.85);
-            --pink-primary: #ff3377;
-            --pink-light: #ff85a2;
-            --strawberry-red: #ff2a55;
+            --bg-dark: #120718;
+            --bg-card: rgba(35, 15, 45, 0.75);
+            --pink-primary: #ff2a6d;
+            --pink-light: #ff75a0;
+            --strawberry-red: #ff0044;
+            --berry-accent: #ff416c;
+            --gold-accent: #ffd700;
             --text-main: #ffffff;
-            --text-sub: #e2d5f8;
-            --accent-gold: #ffd700;
+            --text-sub: #f3e5f5;
         }
 
         * {
@@ -26,40 +27,44 @@
         body {
             background-color: var(--bg-dark);
             background-image: 
-                radial-gradient(circle at 15% 15%, rgba(255, 51, 119, 0.25) 0%, transparent 45%),
-                radial-gradient(circle at 85% 85%, rgba(255, 42, 85, 0.2) 0%, transparent 45%);
+                radial-gradient(circle at 10% 20%, rgba(255, 0, 68, 0.35) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 42, 109, 0.3) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.2) 0%, transparent 60%);
             background-attachment: fixed;
             color: var(--text-main);
             font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-            line-height: 1.7;
+            line-height: 1.8;
             letter-spacing: 0.05em;
-            padding-bottom: 60px;
+            padding-bottom: 80px;
         }
 
         .container {
-            max-width: 640px;
+            max-width: 680px;
             margin: 0 auto;
-            padding: 20px 15px;
+            padding: 25px 15px;
         }
 
         section {
             background: var(--bg-card);
-            backdrop-filter: blur(12px);
-            border-radius: 20px;
-            padding: 30px 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.12);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 24px;
+            padding: 35px 22px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.15);
             text-align: center;
+            border: 1px solid rgba(255, 117, 160, 0.2);
         }
 
         h2 {
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             color: var(--pink-light);
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             position: relative;
             display: inline-block;
-            padding-bottom: 8px;
+            padding-bottom: 10px;
             letter-spacing: 0.08em;
+            text-shadow: 0 0 10px rgba(255, 42, 109, 0.5);
         }
 
         h2::after {
@@ -68,67 +73,102 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 50px;
-            height: 3px;
+            width: 60px;
+            height: 3.5px;
             background: linear-gradient(90deg, var(--strawberry-red), var(--pink-light));
-            border-radius: 2px;
+            border-radius: 3px;
         }
 
         /* HERO */
         .hero {
-            background: linear-gradient(180deg, rgba(255,51,119,0.25) 0%, var(--bg-card) 100%);
-            padding: 35px 20px 25px 20px;
-            border: 1px solid rgba(255, 133, 162, 0.3);
+            background: linear-gradient(180deg, rgba(255, 0, 68, 0.3) 0%, var(--bg-card) 100%);
+            padding: 40px 20px 30px 20px;
+            border: 1.5px solid rgba(255, 117, 160, 0.4);
+            box-shadow: 0 20px 40px rgba(255, 0, 68, 0.25);
         }
 
         .main-logo {
             width: 100%;
-            max-width: 340px;
+            max-width: 360px;
             height: auto;
             display: block;
-            margin: 0 auto 15px auto;
-            filter: drop-shadow(0 5px 15px rgba(255,51,119,0.5));
-            border-radius: 12px;
+            margin: 0 auto 20px auto;
+            filter: drop-shadow(0 8px 20px rgba(255, 0, 68, 0.6));
+            border-radius: 16px;
         }
 
         .hero-catch {
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: bold;
             color: #fff;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+            background: linear-gradient(90deg, var(--strawberry-red), var(--pink-primary));
+            padding: 8px 18px;
+            border-radius: 30px;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(255, 0, 68, 0.4);
         }
 
         /* ABOUT */
-        .concept-text {
-            font-size: 0.9rem;
+        .concept-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 16px;
+            padding: 22px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             text-align: left;
+        }
+
+        .concept-text {
+            font-size: 0.92rem;
             color: var(--text-sub);
             white-space: pre-wrap;
-            line-height: 1.8;
+            line-height: 1.9;
+        }
+
+        .club-badge-box {
+            margin-top: 20px;
+            background: linear-gradient(135deg, rgba(255, 0, 68, 0.2), rgba(255, 215, 0, 0.15));
+            border: 1px solid var(--gold-accent);
+            border-radius: 14px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .club-title {
+            color: var(--gold-accent);
+            font-weight: bold;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .club-desc {
+            font-size: 0.82rem;
+            color: #fff;
         }
 
         /* MEMBER */
         .member-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            gap: 16px;
             margin-top: 15px;
         }
 
         .member-card {
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            padding: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 18px;
+            padding: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
 
         .member-img-wrap {
             width: 100%;
             aspect-ratio: 3 / 4;
-            border-radius: 12px;
+            border-radius: 14px;
             overflow: hidden;
-            margin-bottom: 10px;
-            background-color: #1a1528;
+            margin-bottom: 12px;
+            background-color: #1a0d24;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
         }
 
         .member-img-wrap img {
@@ -140,56 +180,30 @@
         }
 
         .member-name {
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: bold;
             color: var(--text-main);
         }
 
         .member-role {
-            font-size: 0.75rem;
+            font-size: 0.78rem;
             color: var(--pink-light);
             margin-top: 2px;
         }
 
-        /* SNS & TikTok */
+        /* TikTok & EMBED */
         .tiktok-box {
-            background: rgba(0, 0, 0, 0.35);
-            border-radius: 16px;
-            padding: 20px 15px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255, 51, 119, 0.4);
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 18px;
+            padding: 22px 15px;
+            border: 1.5px solid rgba(255, 42, 109, 0.5);
         }
 
-        .video-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .video-card {
-            background: #181028;
-            border-radius: 12px;
-            aspect-ratio: 9 / 16;
+        .tiktok-embed-container {
             display: flex;
-            flex-direction: column;
             justify-content: center;
-            align-items: center;
-            color: #fff;
-            text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.12);
-        }
-
-        .video-card i {
-            font-size: 2.2rem;
-            color: var(--pink-primary);
-            margin-bottom: 8px;
-        }
-
-        .video-card span {
-            font-size: 0.75rem;
-            font-weight: bold;
-            color: var(--text-sub);
+            margin: 20px 0;
+            min-height: 500px;
         }
 
         .tiktok-link-btn {
@@ -201,39 +215,40 @@
             color: #fff;
             text-decoration: none;
             font-weight: bold;
-            padding: 14px 20px;
-            border-radius: 30px;
-            font-size: 0.95rem;
-            box-shadow: 0 4px 15px rgba(255,0,80,0.4);
+            padding: 16px 24px;
+            border-radius: 35px;
+            font-size: 1rem;
+            box-shadow: 0 6px 20px rgba(255, 0, 80, 0.5);
+            margin-top: 15px;
         }
 
         .sns-icons {
             display: flex;
             justify-content: center;
             gap: 12px;
-            margin-top: 15px;
+            margin-top: 20px;
         }
 
         .sns-btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 10px 20px;
-            background: rgba(255,255,255,0.08);
+            padding: 12px 22px;
+            background: rgba(255, 255, 255, 0.1);
             color: var(--text-main);
             text-decoration: none;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 25px;
+            font-size: 0.88rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         /* PROJECT */
         .project-badge {
-            background: linear-gradient(90deg, var(--strawberry-red), var(--pink-primary));
+            background: linear-gradient(90deg, var(--strawberry-red), var(--berry-accent));
             color: #fff;
             font-size: 0.75rem;
             font-weight: bold;
-            padding: 4px 14px;
+            padding: 5px 16px;
             border-radius: 20px;
             display: inline-block;
             margin-bottom: 12px;
@@ -241,44 +256,46 @@
         }
 
         .project-title {
-            font-size: 1.2rem;
-            color: var(--accent-gold);
+            font-size: 1.25rem;
+            color: var(--gold-accent);
             margin-bottom: 15px;
             font-weight: bold;
             line-height: 1.4;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
         }
 
         .music-cards {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 16px;
+            margin-top: 22px;
         }
 
         .music-card {
-            background: rgba(0,0,0,0.35);
-            border-radius: 12px;
-            padding: 10px;
-            border: 1px solid rgba(255,215,0,0.3);
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 16px;
+            padding: 12px;
+            border: 1px solid rgba(255, 215, 0, 0.35);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
         }
 
         .music-card img {
             width: 100%;
             aspect-ratio: 1 / 1;
-            border-radius: 8px;
+            border-radius: 10px;
             object-fit: cover;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             display: block;
         }
 
         .music-title {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: bold;
             color: var(--text-main);
         }
 
         .music-sub {
-            font-size: 0.7rem;
+            font-size: 0.72rem;
             color: var(--pink-light);
             margin-top: 2px;
         }
@@ -286,50 +303,50 @@
         /* CONTACT */
         .form-group {
             text-align: left;
-            margin-bottom: 15px;
+            margin-bottom: 16px;
         }
 
         .form-group label {
             display: block;
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             color: var(--text-sub);
             margin-bottom: 6px;
         }
 
         .form-group input, .form-group textarea {
             width: 100%;
-            padding: 12px 14px;
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.15);
-            background: rgba(0,0,0,0.4);
+            padding: 13px 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.45);
             color: #fff;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
         }
 
         .form-group textarea {
-            height: 110px;
+            height: 120px;
             resize: vertical;
         }
 
         .btn-submit {
             width: 100%;
-            padding: 14px;
+            padding: 15px;
             background: linear-gradient(135deg, var(--pink-primary) 0%, var(--strawberry-red) 100%);
             color: #fff;
             border: none;
-            border-radius: 30px;
+            border-radius: 35px;
             font-weight: bold;
-            font-size: 1rem;
+            font-size: 1.05rem;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255,42,85,0.4);
+            box-shadow: 0 6px 20px rgba(255, 0, 68, 0.5);
             margin-top: 10px;
         }
 
         footer {
             text-align: center;
-            font-size: 0.75rem;
+            font-size: 0.78rem;
             color: var(--text-sub);
-            margin-top: 30px;
+            margin-top: 35px;
         }
     </style>
 </head>
@@ -340,17 +357,24 @@
         <!-- ① HERO -->
         <section class="hero">
             <img src="./logo.png.PNG" alt="オタクのいちごさん オタいち153" class="main-logo">
-            <p class="hero-catch">153cmの2人が織りなすエンターテインメント！</p>
+            <div class="hero-catch">身長153cmのこだわり全開コンビ🍓</div>
         </section>
 
         <!-- ② ABOUT -->
         <section id="about">
-            <h2>オタクのいちごさんとは？</h2>
-            <p class="concept-text">通山栞と米沢のぞみによるパフォーマンスユニット「オタクのいちごさん（オタいち）」。
+            <h2>ABOUT</h2>
+            <div class="concept-box">
+                <p class="concept-text">【ユニット説明：オタクのいちごさん】
 
-ユニット名の由来は、2人の共通点である「身長153cm（1・5・3＝いち・ご）」から。
+身長153cmの（＝1-5-3で「いちご」🍓）通山栞と米沢のぞみによる、こだわりが強すぎる女優コンビ🎬
 
-オタクカルチャーへの愛と情熱を胸に、ライブステージ、SNS活動、楽曲リリースなど多角的なプロジェクトを展開中！</p>
+プロレスとアイドル、それぞれの世界を愛してやまないオタク全開の2人が、人生のスケジュールを全力で駆け抜けるシュールでコミカルなショートドラマをお届け中！</p>
+
+                <div class="club-badge-box">
+                    <div class="club-title">❤️🚩「いちご一会オタク部」入部受付中！</div>
+                    <div class="club-desc">TikTokメインで活動中！部活動への入部は、TikTokギフトの「ハートミー」でお待ちしています❤️</div>
+                </div>
+            </div>
         </section>
 
         <!-- ③ MEMBER -->
@@ -374,43 +398,41 @@
             </div>
         </section>
 
-        <!-- ④ TikTok & SNS -->
+        <!-- ④ TikTok EMBED & SNS -->
         <section id="sns">
             <h2>OFFICIAL TikTok & SNS</h2>
             <div class="tiktok-box">
-                <p style="font-size: 0.85rem; margin-bottom: 12px; color: var(--text-sub);">
-                    <i class="fab fa-tiktok"></i> TikTokでショート動画＆最新動画配信中！
+                <p style="font-size: 0.9rem; color: var(--pink-light); font-weight: bold; margin-bottom: 10px;">
+                    <i class="fab fa-tiktok"></i> TikTokでショートドラマ配信中！
                 </p>
 
-                <div class="video-grid">
-                    <a href="https://www.tiktok.com/@otakuno153?_r=1&_t=ZS-98qgNrLS7ID" target="_blank" class="video-card">
-                        <i class="fas fa-play-circle"></i>
-                        <span>Check TikTok #1</span>
-                    </a>
-                    <a href="https://www.tiktok.com/@otakuno153?_r=1&_t=ZS-98qgNrLS7ID" target="_blank" class="video-card">
-                        <i class="fas fa-play-circle"></i>
-                        <span>Check TikTok #2</span>
-                    </a>
+                <!-- TikTok Embed Player -->
+                <div class="tiktok-embed-container">
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@otakuno153" data-unique-id="otakuno153" data-embed-type="creator" style="max-width: 100%; min-width: 280px;">
+                        <section>
+                            <a target="_blank" href="https://www.tiktok.com/@otakuno153?refer=creator_embed">@otakuno153</a>
+                        </section>
+                    </blockquote>
                 </div>
 
                 <a href="https://www.tiktok.com/@otakuno153?_r=1&_t=ZS-98qgNrLS7ID" target="_blank" class="tiktok-link-btn">
-                    <i class="fab fa-tiktok"></i> TikTok公式アカウントを見る
+                    <i class="fab fa-tiktok"></i> TikTokアプリで見る・「ハートミー」を送る❤️
                 </a>
             </div>
 
             <div class="sns-icons">
                 <a href="https://www.instagram.com/otakuno153?igsh=YmMxdm55OWVvODhy&utm_source=qr" class="sns-btn" target="_blank">
-                    <i class="fab fa-instagram" style="color: #e1306c;"></i> Instagram
+                    <i class="fab fa-instagram" style="color: #ff2a6d;"></i> Instagram
                 </a>
             </div>
         </section>
 
-        <!-- ⑤ PROJECT #1 -->
+        <!-- ⑤ PROJECT -->
         <section id="project">
             <span class="project-badge">PROJECT #01</span>
-            <div class="project-title">80年代アイドルプロジェクト！<br>「恋するオルゴール」デビュー</div>
+            <div class="project-title">80年代アイドルプロジェクト！<br>「恋するオルゴール」</div>
             
-            <p style="font-size: 0.85rem; color: var(--text-sub);">
+            <p style="font-size: 0.88rem; color: var(--text-sub);">
                 あの頃の輝きとトキメキを今に復刻！<br>懐かしくも新しい80年代王道アイドルサウンドをお届けします。
             </p>
 
@@ -462,6 +484,8 @@
 
     </div>
 
+    <!-- TikTok Embed Script -->
+    <script async src="https://www.tiktok.com/embed.js"></script>
     <script>
         document.getElementById("year").innerText = new Date().getFullYear();
     </script>
