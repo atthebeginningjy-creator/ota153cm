@@ -180,6 +180,40 @@
             color: #fff;
         }
 
+        /* イベント情報バナー */
+        .event-banner {
+            margin-top: 35px;
+            background: linear-gradient(135deg, rgba(255, 0, 85, 0.15), rgba(0, 240, 255, 0.15));
+            border: 3px solid var(--accent-yellow);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(255, 213, 0, 0.3);
+        }
+        .event-banner h3 {
+            color: var(--accent-yellow);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        .event-btn {
+            display: inline-block;
+            background-color: var(--accent-yellow);
+            color: #000;
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 15px;
+            border: 2px solid #fff;
+            box-shadow: 4px 4px 0px var(--neon-pink);
+            transition: 0.2s;
+        }
+        .event-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 15px var(--accent-yellow);
+        }
+
         /* ④ TikTok & SNS */
         .sns-container {
             text-align: center;
@@ -210,6 +244,14 @@
         }
         .social-btn.insta:hover {
             box-shadow: 0 0 15px var(--neon-pink);
+        }
+        .social-btn.shop {
+            border-color: var(--accent-yellow);
+            box-shadow: 5px 5px 0px var(--accent-yellow);
+            background-color: #1a1a10;
+        }
+        .social-btn.shop:hover {
+            box-shadow: 0 0 15px var(--accent-yellow);
         }
 
         /* ⑥ CONTACT */
@@ -328,6 +370,17 @@
                     <p style="color: var(--neon-cyan); font-size: 0.9rem;">2nd Single</p>
                 </div>
             </div>
+
+            <!-- イベント情報追加 -->
+            <div class="event-banner">
+                <h3>🗓️ イベント情報</h3>
+                <p style="font-size: 1.1rem; font-weight: bold; color: #fff;">
+                    8/19にセカンドシングルLIVE＆コラボカフェイベント開催決定！
+                </p>
+                <a href="https://forms.gle/LF9H1wG6Tf73abDF7" target="_blank" class="event-btn">
+                    詳細はこちら <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
         </div>
 
         <!-- ④ TikTok & SNS -->
@@ -350,9 +403,22 @@
                     <i class="fab fa-instagram" style="color: #ff0055;"></i> Instagram公式アカウントを見る
                 </a>
             </div>
+
+            <!-- グッズ情報（公式ショップ）追加 -->
+            <div style="margin-top: 30px; padding-top: 25px; border-top: 2px dashed rgba(255, 255, 255, 0.15);">
+                <p style="font-weight: bold; font-size: 1.1rem; margin-bottom: 10px; color: var(--accent-yellow);">
+                    🛍️ グッズ情報
+                </p>
+                <p style="font-size: 0.95rem; color: #b0c4de; margin-bottom: 15px;">
+                    オリラボマーケットで販売中！グッズもcheck！
+                </p>
+                <a href="https://market.orilab.jp/user/6102c55e11253" target="_blank" class="social-btn shop">
+                    <i class="fas fa-store" style="color: var(--accent-yellow);"></i> 公式オンラインショップを見る
+                </a>
+            </div>
         </div>
 
-        <!-- ⑥ CONTACT（Formspree版に切り替え） -->
+        <!-- ⑥ CONTACT -->
         <div class="pop-card">
             <h2 style="text-align: center; display: block; border: none; margin-bottom: 15px;">Contact</h2>
             <p style="text-align: center; font-weight: bold; margin-bottom: 25px; color: #b0c4de; font-size: 1.05rem;">
