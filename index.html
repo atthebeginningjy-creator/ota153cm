@@ -202,19 +202,52 @@
             box-shadow: 0 0 15px var(--neon-pink);
         }
 
-        .form-wrapper {
-            width: 100%;
+        /* CONTACT フォームデザイン */
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
             display: flex;
-            justify-content: center;
-            margin-top: 20px;
+            flex-direction: column;
+            gap: 20px;
+            text-align: left;
         }
-        .form-wrapper iframe {
+        .contact-form input,
+        .contact-form textarea {
             width: 100%;
-            max-width: 800px;
-            height: 850px;
-            border: none;
-            border-radius: 12px;
-            background: #ffffff;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid var(--neon-cyan);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent-yellow);
+            box-shadow: 0 0 10px rgba(255, 213, 0, 0.5);
+        }
+        .contact-form textarea {
+            height: 180px;
+            resize: vertical;
+        }
+        .submit-btn {
+            background-color: var(--neon-pink);
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 15px;
+            border: 3px solid #fff;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 5px 5px 0px var(--neon-cyan);
+            transition: 0.2s;
+            margin-top: 10px;
+        }
+        .submit-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px var(--neon-pink);
         }
 
         footer {
@@ -318,15 +351,20 @@
             </div>
         </div>
 
-        <!-- ⑥ CONTACT（Googleフォーム埋め込み） -->
-        <div class="pop-card">
-            <h2 style="text-align: center; display: block; border: none; margin-bottom: 15px;">Contact</h2>
-            <p style="text-align: center; font-weight: bold; margin-bottom: 25px; color: #b0c4de; font-size: 1.05rem;">
-                出演のご依頼やお問い合わせは、以下のフォームよりお気軽にご連絡ください！
+        <!-- ⑥ CONTACT（Formspree版・世界観完全統一） -->
+        <div class="pop-card" style="text-align: center;">
+            <h2 style="display: block; border: none; margin-bottom: 15px;">Contact</h2>
+            <p style="font-weight: bold; margin-bottom: 30px; color: #b0c4de; font-size: 1.05rem;">
+                出演のご依頼やお問い合わせは、以下のフォームよりお気軽にご連絡ください！🍓
             </p>
-            <div class="form-wrapper">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf1Qjd69R7o0KF9iFWCmh4IoY8Td0WILmN7-OLx4OoaeNWtLQ/viewform?embedded=true" width="640" height="850" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
-            </div>
+            
+            <form action="https://formspree.io/f/mbgrklzg" method="POST" class="contact-form">
+                <input type="text" name="name" required placeholder="お名前 / 貴社名">
+                <input type="email" name="email" required placeholder="メールアドレス">
+                <input type="text" name="subject" placeholder="お問い合わせ件名">
+                <textarea name="message" required placeholder="お問い合わせ内容をご自由にご記入ください"></textarea>
+                <button type="submit" class="submit-btn">送信する</button>
+            </form>
         </div>
 
         <footer>
