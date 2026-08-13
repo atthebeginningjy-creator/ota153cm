@@ -24,13 +24,13 @@
             padding: 0;
         }
 
+        /* 浮遊・ホラー要素を完全に遮断 */
         body {
             background-color: var(--bg-dark);
             background-image: 
                 radial-gradient(circle at 10% 15%, rgba(255, 0, 85, 0.3) 0%, transparent 35%),
-                radial-gradient(circle at 90% 85%, rgba(0, 255, 255, 0.25) 0%, transparent 35%),
-                radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 0);
-            background-size: 100% 100%, 100% 100%, 20px 20px;
+                radial-gradient(circle at 90% 85%, rgba(0, 255, 255, 0.25) 0%, transparent 35%);
+            background-size: 100% 100%;
             background-attachment: fixed;
             color: var(--text-main);
             font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
@@ -45,7 +45,6 @@
             margin: 0 auto;
             padding: 20px 15px;
             position: relative;
-            z-index: 5;
         }
 
         section {
@@ -59,31 +58,43 @@
             text-align: center;
             border: 2px solid rgba(255, 0, 85, 0.4);
             position: relative;
-            overflow: hidden;
-        }
-
-        /* セクション見出し＆ワンポイントアイコン */
-        .section-header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 22px;
-        }
-
-        .header-gif {
-            width: 45px;
-            height: 45px;
-            object-fit: contain;
         }
 
         h2 {
             font-size: 1.4rem;
             color: var(--neon-yellow);
+            margin-bottom: 22px;
             position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
             letter-spacing: 0.08em;
             text-shadow: 0 0 12px rgba(255, 238, 0, 0.8), 0 0 5px #ff0055;
-            margin: 0;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--strawberry-red), var(--neon-yellow), var(--neon-blue));
+            border-radius: 4px;
+        }
+
+        /* 自作・CSSドット絵風神社GIFモチーフ（枠の中に完全固定） */
+        .pixel-torii-icon {
+            display: inline-block;
+            font-size: 1.8rem;
+            animation: toriiPixelGlow 1.2s infinite alternate ease-in-out;
+            vertical-align: middle;
+            margin: 0 6px;
+        }
+
+        @keyframes toriiPixelGlow {
+            0% { transform: scale(1); filter: drop-shadow(0 0 2px #ff0055); }
+            100% { transform: scale(1.18); filter: drop-shadow(0 0 8px #ffee00); }
         }
 
         /* HERO */
@@ -132,7 +143,7 @@
             line-height: 1.9;
         }
 
-        /* 神社＆オタク部ワンポイント */
+        /* 和風神社モチーフバナー */
         .club-badge-box {
             margin-top: 22px;
             background: linear-gradient(135deg, rgba(255, 0, 85, 0.35), rgba(255, 238, 0, 0.25));
@@ -141,7 +152,6 @@
             padding: 18px;
             text-align: center;
             box-shadow: 0 0 15px rgba(255, 238, 0, 0.3);
-            position: relative;
         }
 
         .club-title {
@@ -150,10 +160,6 @@
             font-size: 1.05rem;
             margin-bottom: 6px;
             text-shadow: 0 0 8px rgba(0,0,0,0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
         }
 
         .club-desc {
@@ -391,13 +397,7 @@
 
         <!-- ② ABOUT -->
         <section id="about">
-            <div class="section-header">
-                <!-- プロレスアニメーションGIF -->
-                <img src="https://raw.githubusercontent.com/Tavndo/GIFs/main/wrestling.gif" alt="プロレス" class="header-gif" onerror="this.src='https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/1f93c.png'">
-                <h2>ABOUT</h2>
-                <!-- アイドルアニメーションGIF -->
-                <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/1f3a4.png" alt="アイドル" class="header-gif">
-            </div>
+            <h2>🤼‍♀️ ABOUT 🎤</h2>
             
             <div class="concept-box">
                 <p class="concept-text">【ユニット説明：オタクのいちごさん】
@@ -406,12 +406,12 @@
 
 プロレスとアイドル、それぞれの世界を愛してやまないオタク全開の2人が、人生のスケジュールを全力で駆け抜けるシュールでコミカルなショートドラマをお届け中！</p>
 
-                <!-- 縁起の良い神社GIF付きバナー -->
+                <!-- ピコピコ動く鳥居が入った神社風ワンポイントバナー -->
                 <div class="club-badge-box">
                     <div class="club-title">
-                        <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/26e9.png" alt="神社" style="width: 28px; height: 28px;">
+                        <span class="pixel-torii-icon">⛩️</span>
                         「いちご一会オタク部」入部受付中！
-                        <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/26e9.png" alt="神社" style="width: 28px; height: 28px;">
+                        <span class="pixel-torii-icon">⛩️</span>
                     </div>
                     <div class="club-desc">TikTokメインで活動中！部活動への入部は、TikTokギフトの「ハートミー」でお待ちしています❤️</div>
                 </div>
@@ -420,13 +420,7 @@
 
         <!-- ③ MEMBER -->
         <section id="member">
-            <div class="section-header">
-                <!-- ラッコアイコン -->
-                <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/1f7a6.png" alt="ラッコ" class="header-gif">
-                <h2>MEMBER</h2>
-                <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/1f7a6.png" alt="ラッコ" class="header-gif">
-            </div>
-
+            <h2>✨ MEMBER ✨</h2>
             <div class="member-grid">
                 <div class="member-card">
                     <div class="member-img-wrap">
@@ -447,9 +441,7 @@
 
         <!-- ④ TikTok EMBED & SNS -->
         <section id="sns">
-            <div class="section-header">
-                <h2>OFFICIAL TikTok & SNS</h2>
-            </div>
+            <h2>🎬 OFFICIAL TikTok & SNS 📲</h2>
             
             <div class="tiktok-box">
                 <p style="font-size: 0.95rem; color: var(--neon-yellow); font-weight: bold; margin-bottom: 10px;">
@@ -501,9 +493,7 @@
 
         <!-- ⑥ CONTACT -->
         <section id="contact">
-            <div class="section-header">
-                <h2>CONTACT</h2>
-            </div>
+            <h2>✉️ CONTACT ✉️</h2>
             
             <p style="font-size: 0.88rem; color: var(--text-sub); margin-bottom: 20px;">
                 出演依頼、取材、各種お仕事のご相談・お問合せは<br>以下のフォームよりお気軽にご連絡ください。
@@ -516,7 +506,7 @@
                 </div>
                 <div class="form-group">
                     <label>メールアドレス *</label>
-                    <input type="email" name="email" required placeholder="example@email.com">
+                    <input type="email" name="email" required placeholder="example@example.com">
                 </div>
                 <div class="form-group">
                     <label>お問い合わせ件名</label>
