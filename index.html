@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            /* 背景はB案のダークサイバー仕様 */
             --bg-dark: #0d0d12;
             --neon-pink: #ff0055;
             --neon-cyan: #00f0ff;
@@ -27,7 +26,6 @@
 
         body {
             background-color: var(--bg-dark);
-            /* B案のサイバー空間風グリッド背景 */
             background-image: 
                 linear-gradient(rgba(0, 240, 255, 0.04) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 240, 255, 0.04) 1px, transparent 1px);
@@ -40,14 +38,12 @@
             padding-bottom: 80px;
         }
 
-        /* 画面を広く使うワイドコンテナ（最大1200px） */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
         }
 
-        /* ----- メインロゴ：確実に大きく表示（最大900px） ----- */
         .hero {
             text-align: center;
             padding: 40px 20px 60px 20px;
@@ -74,7 +70,6 @@
             transform: rotate(-1deg);
         }
 
-        /* ----- A案のカード型 ＋ B案のダークサイバー感の融合 ----- */
         .pop-card {
             background-color: var(--card-bg);
             border: 4px solid var(--neon-cyan);
@@ -95,7 +90,6 @@
             padding-bottom: 5px;
         }
 
-        /* 横並びレイアウト用クラス */
         .flex-row {
             display: flex;
             flex-wrap: wrap;
@@ -108,7 +102,6 @@
             text-align: left;
         }
 
-        /* ② ABOUT（日本語解説） */
         .about-text {
             font-size: 1.1rem;
             font-weight: 500;
@@ -119,7 +112,6 @@
             line-height: 2;
         }
 
-        /* ③ MEMBER（ワイド配置） */
         .member-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -152,7 +144,6 @@
             box-shadow: 0 0 10px var(--neon-pink);
         }
 
-        /* ⑤ PROJECT（ワイド配置） */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -180,7 +171,6 @@
             color: #fff;
         }
 
-        /* ④ TikTok & SNS */
         .sns-container {
             text-align: center;
         }
@@ -212,7 +202,6 @@
             box-shadow: 0 0 15px var(--neon-pink);
         }
 
-        /* ⑥ CONTACT（Googleフォーム埋め込み調整） */
         .form-wrapper {
             width: 100%;
             display: flex;
@@ -225,7 +214,7 @@
             height: 850px;
             border: none;
             border-radius: 12px;
-            background: #ffffff; /* フォーム内は読みやすいよう白背景 */
+            background: #ffffff;
         }
 
         footer {
@@ -240,7 +229,7 @@
 
     <div class="container">
         
-        <!-- ① HERO（大きく表示されるロゴ） -->
+        <!-- ① HERO -->
         <div class="hero">
             <img src="./logo.png.PNG" alt="オタクのいちごさん" class="main-logo">
             <br>
