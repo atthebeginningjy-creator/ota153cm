@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- キャッシュを自動的に無効化し、常に最新状態を表示させる設定 -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>オタクのいちごさん🍓 Official Site</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -12,7 +16,6 @@
             --pink-main: #ff1493;
             --pink-bright: #ff0055;
             --gold-shrine: #ffd700;
-            --neon-blue: #00f2fe;
             --text-white: #ffffff;
             --text-sub: #e2d9f3;
         }
@@ -25,7 +28,6 @@
 
         body {
             background-color: var(--bg-dark);
-            /* 背景全体にポップなグラデーションとドットパターンを配置 */
             background-image: 
                 radial-gradient(circle at 20% 20%, rgba(255, 20, 147, 0.22) 0%, transparent 40%),
                 radial-gradient(circle at 80% 80%, rgba(0, 242, 254, 0.18) 0%, transparent 40%),
@@ -40,7 +42,7 @@
             overflow-x: hidden;
         }
 
-        /* 左右の寂しさを解消するサイド装飾（PC用） */
+        /* 画面左右の寂しさを消すサイド装飾 */
         .side-decorations {
             position: fixed;
             top: 0;
@@ -48,11 +50,11 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -1;
+            z-index: 0;
             display: none;
         }
 
-        @media (min-width: 900px) {
+        @media (min-width: 850px) {
             .side-decorations {
                 display: block;
             }
@@ -60,21 +62,21 @@
 
         .side-item {
             position: absolute;
-            font-size: 1.5rem;
-            opacity: 0.4;
-            animation: floatSide 4s ease-in-out infinite alternate;
+            font-size: 1.8rem;
+            opacity: 0.5;
+            animation: floatSide 3.5s ease-in-out infinite alternate;
         }
 
-        .side-item.left-1 { top: 15%; left: 8%; animation-delay: 0s; }
-        .side-item.left-2 { top: 45%; left: 5%; animation-delay: 1.5s; font-size: 2rem; }
-        .side-item.left-3 { top: 75%; left: 9%; animation-delay: 0.8s; }
-        .side-item.right-1 { top: 20%; right: 8%; animation-delay: 1s; font-size: 2rem; }
-        .side-item.right-2 { top: 50%; right: 5%; animation-delay: 0.5s; }
-        .side-item.right-3 { top: 80%; right: 10%; animation-delay: 2s; }
+        .side-item.left-1 { top: 18%; left: 6%; animation-delay: 0s; }
+        .side-item.left-2 { top: 48%; left: 4%; animation-delay: 1.2s; font-size: 2.3rem; }
+        .side-item.left-3 { top: 78%; left: 7%; animation-delay: 0.6s; }
+        .side-item.right-1 { top: 22%; right: 6%; animation-delay: 0.8s; font-size: 2.3rem; }
+        .side-item.right-2 { top: 52%; right: 4%; animation-delay: 0.3s; }
+        .side-item.right-3 { top: 82%; right: 8%; animation-delay: 1.5s; }
 
         @keyframes floatSide {
-            0% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 2px rgba(255,20,147,0.5)); }
-            100% { transform: translateY(-12px) scale(1.1); filter: drop-shadow(0 0 10px rgba(255,215,0,0.8)); }
+            0% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 4px rgba(255,20,147,0.6)); }
+            100% { transform: translateY(-15px) scale(1.15); filter: drop-shadow(0 0 12px rgba(255,215,0,0.9)); }
         }
 
         .container {
@@ -85,7 +87,6 @@
             z-index: 1;
         }
 
-        /* セクション共通カード */
         section {
             background: var(--card-bg);
             border-radius: 22px;
@@ -96,7 +97,6 @@
             text-align: center;
         }
 
-        /* 見出しデザイン */
         h2 {
             font-size: 1.35rem;
             color: #ffffff;
@@ -166,7 +166,6 @@
             line-height: 1.9;
         }
 
-        /* 神社＆オタク部バナー */
         .shrine-badge-box {
             margin-top: 22px;
             background: linear-gradient(135deg, rgba(214, 40, 40, 0.4) 0%, rgba(30, 10, 40, 0.85) 100%);
@@ -395,7 +394,7 @@
 </head>
 <body>
 
-    <!-- 左右の寂しさをなくすための背景サイド装飾（PCサイズで表示されます） -->
+    <!-- 左右の寂しさを消す背景装飾 -->
     <div class="side-decorations">
         <div class="side-item left-1">🍓</div>
         <div class="side-item left-2">✨</div>
@@ -424,7 +423,6 @@
 
 プロレスとアイドル、それぞれの世界を愛してやまないオタク全開の2人が、人生のスケジュールを全力で駆け抜けるシュールでコミカルなショートドラマをお届け中！</p>
 
-                <!-- 和風・神社デザインバナー -->
                 <div class="shrine-badge-box">
                     <div class="shrine-title">⛩️「いちご一会オタク部」入部受付中！⛩️</div>
                     <div class="shrine-desc">TikTokメインで活動中！部活動への入部は、TikTokギフトの「ハートミー」でお待ちしています❤️</div>
