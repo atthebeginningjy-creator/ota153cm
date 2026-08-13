@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>オタクのいちごさん Official Site</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ==========================================================================
+           デザイン設定（カラー・フォント）
+           ========================================================================== */
+        :root {
+            --bg-dark: #121212;
+            --bg-card: #1e1e24;
+            --pink-primary: #ff4081;
+            --pink-light: #ff80ab;
+            --strawberry-red: #e53935;
+            --text-main: #ffffff;
+            --text-sub: #b0bec5;
+            --accent-gold: #ffd700;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.7;
+            letter-spacing: 0.05em;
+            padding-bottom: 60px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* セクション共通 */
+        section {
+            background-color: var(--bg-card);
+            border-radius: 16px;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            color: var(--pink-primary);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--strawberry-red), var(--pink-light));
+            border-radius: 2px;
+        }
+
+        /* ① メインビジュアル */
+        .hero {
+            background: linear-gradient(180deg, #2a1b28 0%, var(--bg-card) 100%);
+            padding: 40px 20px 30px 20px;
+        }
+
+        .main-logo {
+            width: 100%;
+            max-width: 320px;
+            height: auto;
+            display: block;
+            margin: 0 auto 20px auto;
+            filter: drop-shadow(0 5px 15px rgba(255,64,129,0.3));
+        }
+
+        .hero-catch {
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: var(--pink-light);
+            margin-top: 10px;
+        }
+
+        /* ② コンセプト */
+        .concept-text {
+            font-size: 0.9rem;
+            text-align: left;
+            color: var(--text-sub);
+            white-space: pre-wrap;
+        }
+
+        /* ③ メンバー紹介 */
+        .member-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .member-card {
+            background-color: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            padding: 12px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .member-img-wrap {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 10px;
+            background-color: #000;
+        }
+
+        .member-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .member-name {
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: var(--text-main);
+        }
+
+        .member-role {
+            font-size: 0.75rem;
+            color: var(--pink-light);
+            margin-top: 2px;
+        }
+
+        /* ④ TikTok & SNS */
+        .tiktok-box {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            padding: 20px 15px;
+            margin-bottom: 20px;
+            border: 1px solid var(--pink-primary);
+        }
+
+        /* TikTok動画プレースホルダーカード */
+        .video-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .video-card {
+            background: #000;
+            border-radius: 8px;
+            aspect-ratio: 9 / 16;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .video-card:active {
+            transform: scale(0.98);
+        }
+
+        .video-card i {
+            font-size: 2rem;
+            color: var(--pink-primary);
+            margin-bottom: 8px;
+        }
+
+        .video-card span {
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: var(--text-sub);
+        }
+
+        .tiktok-link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(45deg, #00f2fe, #4facfe, #ff0050);
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 14px 20px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(255,0,80,0.4);
+            transition: transform 0.2s;
+        }
+
+        .tiktok-link-btn:active {
+            transform: scale(0.97);
+        }
+
+        .sns-icons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .sns-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 18px;
+            background: rgba(255,255,255,0.08);
+            color: var(--text-main);
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* ⑤ PROJECT #1 */
+        .project-badge {
+            background: linear-gradient(90deg, var(--strawberry-red), var(--pink-primary));
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .music-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .music-card {
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            padding: 10px;
+            border: 1px solid rgba(255,215,0,0.2);
+        }
+
+        .music-card img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            border-radius: 6px;
+            object-fit: cover;
+            margin-bottom: 8px;
+        }
+
+        .music-title {
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: var(--text-main);
+        }
+
+        .music-sub {
+            font-size: 0.7rem;
+            color: var(--pink-light);
+            margin-top: 2px;
+        }
+
+        /* ⑥ お問い合わせフォーム */
+        .form-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(0,0,0,0.3);
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--pink-primary) 0%, var(--strawberry-red) 100%);
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(229,57,53,0.4);
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-sub);
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <section class="hero">
+            <img src="./logo.png" alt="オタクのいちごさん オタいち153" class="main-logo">
+            <p class="hero-catch">153cmの2人が織りなすエンターテインメント！</p>
+        </section>
+
+        <section id="about">
+            <h2>オタクのいちごさんとは？</h2>
+            <p class="concept-text">通山栞と米沢のぞみによるパフォーマンスユニット「オタクのいちごさん（オタいち）」。
+
+ユニット名の由来は、2人の共通点である「身長153cm（1・5・3＝いち・ご）」から。
+
+オタクカルチャーへの愛と情熱を胸に、ライブステージ、SNS活動、楽曲リリースなど多角的なプロジェクトを展開中！</p>
+        </section>
+
+        <section id="member">
+            <h2>MEMBER</h2>
+            <div class="member-grid">
+                <div class="member-card">
+                    <div class="member-img-wrap">
+                        <img src="./toriyama.png" alt="通山 栞">
+                    </div>
+                    <div class="member-name">通山 栞</div>
+                    <div class="member-role">Shiori Toriyama</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-img-wrap">
+                        <img src="./yonezawa.png" alt="米沢 のぞみ">
+                    </div>
+                    <div class="member-name">米沢 のぞみ</div>
+                    <div class="member-role">Nozomi Yonezawa</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sns">
+            <h2>OFFICIAL TikTok & SNS</h2>
+            <div class="tiktok-box">
+                <p style="font-size: 0.85rem; margin-bottom: 12px; color: var(--text-sub);">
+                    <i class="fab fa-tiktok"></i> TikTokでショート動画＆最新動画配信中！
+                </p>
+
+                <div class="video-grid">
+                    <a href="https://www.tiktok.com/@otakuno153?_r=1&_t=ZS-98qgNrLS7ID" target="_blank" class="video-card">
+                        <i class="fas fa-play-circle"></i>
+                        <span>Check TikTok #1</span>
+                    </a>
+                    <a href="https://www.tiktok.com/@otakuno153?_r=1&_t=ZS-98qgNrLS7ID" target="_blank" class="video-card">
+                        <i class="fas fa-play-circle"></i>
+                        <span>Check TikTok #2</span>
+                    </a>
+                </div>
+
+                <a href="https://www.tiktok.com/@otakuno153?_r=1&_t=ZS-98qgNrLS7ID" target="_blank" class="tiktok-link-btn">
+                    <i class="fab fa-tiktok"></i> TikTok公式アカウントを見る
+                </a>
+            </div>
+
+            <div class="sns-icons">
+                <a href="https://www.instagram.com/otakuno153?igsh=YmMxdm55OWVvODhy&utm_source=qr" class="sns-btn" target="_blank">
+                    <i class="fab fa-instagram" style="color: #e1306c;"></i> Instagram
+                </a>
+            </div>
+        </section>
+
+        <section id="project">
+            <span class="project-badge">PROJECT #01</span>
+            <div class="project-title">80年代アイドルプロジェクト！<br>「恋するオルゴール」デビュー</div>
+            
+            <p style="font-size: 0.85rem; color: var(--text-sub);">
+                あの頃の輝きとトキメキを今に復刻！<br>懐かしくも新しい80年代王道アイドルサウンドをお届けします。
+            </p>
+
+            <div class="music-cards">
+                <div class="music-card">
+                    <img src="./hoshikuzu.png" alt="星屑パスポート">
+                    <div class="music-title">『星屑パスポート』</div>
+                    <div class="music-sub">恋するオルゴール デビュー曲</div>
+                </div>
+                <div class="music-card">
+                    <img src="./manatsu.jpg" alt="真夏のテレフォン">
+                    <div class="music-title">『真夏のテレフォン』</div>
+                    <div class="music-sub">2nd Single</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>CONTACT</h2>
+            <p style="font-size: 0.85rem; color: var(--text-sub); margin-bottom: 20px;">
+                出演依頼、取材、各種お仕事のご相談・お問合せは<br>以下のフォームよりお気軽にご連絡ください。
+            </p>
+
+            <form action="https://formspree.io/f/at.the.beginning.jy@gmail.com" method="POST">
+                <div class="form-group">
+                    <label>お名前 / 貴社名 *</label>
+                    <input type="text" name="name" required placeholder="例：山田 太郎">
+                </div>
+                <div class="form-group">
+                    <label>メールアドレス *</label>
+                    <input type="email" name="email" required placeholder="example@email.com">
+                </div>
+                <div class="form-group">
+                    <label>お問い合わせ件名</label>
+                    <input type="text" name="subject" placeholder="例：イベント出演依頼について">
+                </div>
+                <div class="form-group">
+                    <label>お問い合わせ内容 *</label>
+                    <textarea name="message" required placeholder="ご自由にご記入ください"></textarea>
+                </div>
+                <button type="submit" class="btn-submit">送信する</button>
+            </form>
+        </section>
+
+        <footer>
+            &copy; <span id="year"></span> オタクのいちごさん Official. All Rights Reserved.
+        </footer>
+
+    </div>
+
+    <script>
+        document.getElementById("year").innerText = new Date().getFullYear();
+    </script>
+</body>
+</html>
