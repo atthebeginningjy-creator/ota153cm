@@ -10,14 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-light: #fff0f5;
-            --card-bg: rgba(255, 255, 255, 0.95);
-            --pink-primary: #ff3385;
-            --pink-soft: #ff80bf;
-            --pink-dark: #cc0052;
-            --gold-accent: #ffb700;
-            --text-dark: #331020;
-            --text-sub: #66334c;
+            --bg-color: #e0f7fa; /* 明るい水色 */
+            --main-pink: #ff4081; /* ポップなピンク */
+            --accent-yellow: #ffd54f;
+            --text-main: #263238;
+            --card-bg: #ffffff;
         }
 
         * {
@@ -27,489 +24,314 @@
         }
 
         body {
-            /* 暗いホラー感を排除し、明るくポップで可愛いピンク×ホワイト背景に変更 */
-            background-color: var(--bg-light);
-            background-image: 
-                radial-gradient(circle at 10% 10%, #ffe6ee 0%, transparent 40%),
-                radial-gradient(circle at 90% 90%, #ffd1dc 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, #ffffff 0%, transparent 60%);
-            background-attachment: fixed;
-            color: var(--text-dark);
+            /* アキバ系ポップな水色ドット背景 */
+            background-color: var(--bg-color);
+            background-image: radial-gradient(#b2ebf2 3px, transparent 3px);
+            background-size: 30px 30px;
+            color: var(--text-main);
             font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
             line-height: 1.8;
             letter-spacing: 0.05em;
-            padding-bottom: 60px;
         }
 
-        /* 画面全体をゆったり広く使うためのレイアウト設定（幅を1000pxに拡大） */
+        /* ワイドレイアウトの要（最大1200pxまで広がる） */
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 30px 20px;
+            padding: 40px 20px;
         }
 
-        section {
-            background: var(--card-bg);
-            border-radius: 24px;
-            padding: 40px 30px;
-            margin-bottom: 35px;
-            box-shadow: 0 10px 30px rgba(255, 51, 133, 0.12);
-            border: 2px solid #ffccd5;
-            text-align: center;
+        /* ポップなカードデザイン（太枠とズラした影） */
+        .pop-card {
+            background-color: var(--card-bg);
+            border: 4px solid var(--text-main);
+            border-radius: 16px;
+            box-shadow: 8px 8px 0px var(--main-pink);
+            padding: 40px;
+            margin-bottom: 60px;
         }
 
         h2 {
-            font-size: 1.6rem;
-            color: var(--pink-dark);
-            margin-bottom: 28px;
-            position: relative;
+            font-size: 2rem;
+            color: var(--main-pink);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 0px var(--accent-yellow);
+            border-bottom: 4px dashed var(--main-pink);
             display: inline-block;
-            padding-bottom: 8px;
-            letter-spacing: 0.08em;
-            font-weight: 800;
+            padding-bottom: 5px;
         }
 
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 70px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--pink-primary), var(--gold-accent));
-            border-radius: 2px;
+        /* 横並びレイアウト用クラス */
+        .flex-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .flex-row.reverse {
+            flex-direction: row-reverse;
         }
 
-        /* ① HERO */
+        .flex-half {
+            flex: 1 1 300px;
+            text-align: left; /* テキストは読みやすく左揃え */
+        }
+
+        /* ① HERO（ファーストビュー） */
         .hero {
-            background: linear-gradient(135deg, #fff0f5 0%, #ffe0eb 100%);
-            padding: 50px 20px 40px 20px;
-            border: 3px solid #ff99c2;
-            box-shadow: 0 15px 35px rgba(255, 51, 133, 0.15);
+            text-align: center;
+            padding: 60px 20px;
+            margin-bottom: 40px;
         }
-
         .main-logo {
             width: 100%;
-            max-width: 480px;
+            max-width: 600px;
             height: auto;
-            display: block;
-            margin: 0 auto 25px auto;
-            filter: drop-shadow(0 5px 15px rgba(255, 51, 133, 0.2));
-            border-radius: 16px;
+            filter: drop-shadow(4px 4px 0px var(--main-pink));
         }
-
         .hero-catch {
-            font-size: 1.15rem;
+            font-size: 1.5rem;
             font-weight: bold;
-            color: #fff;
-            background: linear-gradient(90deg, var(--pink-primary), var(--pink-soft));
-            padding: 12px 30px;
-            border-radius: 30px;
+            background-color: var(--accent-yellow);
+            color: var(--text-main);
+            padding: 10px 30px;
+            border: 3px solid var(--text-main);
+            border-radius: 50px;
             display: inline-block;
-            box-shadow: 0 5px 20px rgba(255, 51, 133, 0.3);
+            margin-top: 20px;
+            transform: rotate(-2deg);
         }
 
         /* ② ABOUT */
-        .concept-box {
-            background: #fff9fb;
-            border-radius: 20px;
-            padding: 30px 25px;
-            border: 1.5px solid #ffccd5;
-            text-align: left;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .concept-text {
-            font-size: 1.02rem;
-            color: var(--text-dark);
-            white-space: pre-wrap;
-            line-height: 2;
-            font-weight: 500;
-        }
-
-        .shrine-badge-box {
-            margin-top: 25px;
-            background: linear-gradient(135deg, #fff5e6 0%, #ffebf0 100%);
-            border: 2px solid var(--gold-accent);
-            border-radius: 18px;
-            padding: 22px 20px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(255, 183, 0, 0.2);
-        }
-
-        .shrine-title {
-            color: #d97700;
+        .about-text {
+            font-size: 1.1rem;
             font-weight: bold;
-            font-size: 1.15rem;
-            margin-bottom: 8px;
+            background: #fff;
+            padding: 30px;
+            border: 3px solid #4fc3f7;
+            border-radius: 12px;
+            box-shadow: 6px 6px 0px #4fc3f7;
         }
 
-        .shrine-desc {
-            font-size: 0.95rem;
-            color: var(--text-dark);
-            font-weight: bold;
-        }
-
-        /* ③ MEMBER（幅を広げてゆったり配置） */
+        /* ③ MEMBER */
         .member-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
         }
-
         .member-card {
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 20px;
-            border: 2px solid #ffccd5;
-            box-shadow: 0 8px 20px rgba(255, 51, 133, 0.08);
+            text-align: center;
         }
-
-        .member-img-wrap {
+        .member-img {
             width: 100%;
-            aspect-ratio: 3 / 4;
-            border-radius: 16px;
-            overflow: hidden;
-            margin-bottom: 15px;
-            background-color: #fff0f5;
-            border: 1px solid #ffb3c6;
-        }
-
-        .member-img-wrap img {
-            width: 100%;
-            height: 100%;
+            aspect-ratio: 3/4;
             object-fit: cover;
-            object-position: top;
-            display: block;
+            border: 4px solid var(--text-main);
+            border-radius: 16px;
+            box-shadow: 6px 6px 0px var(--accent-yellow);
+            margin-bottom: 20px;
+            transition: transform 0.2s;
         }
-
+        .member-img:hover {
+            transform: translateY(-5px);
+        }
         .member-name {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: var(--text-dark);
-        }
-
-        .member-role {
-            font-size: 0.88rem;
-            color: var(--pink-primary);
-            font-weight: bold;
-            margin-top: 4px;
+            font-size: 1.5rem;
+            font-weight: 900;
+            background-color: var(--main-pink);
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 30px;
+            display: inline-block;
         }
 
         /* ④ TikTok & SNS */
-        .tiktok-box {
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 25px;
-            border: 2px solid var(--pink-soft);
-            box-shadow: 0 8px 20px rgba(255, 51, 133, 0.08);
-            max-width: 700px;
-            margin: 0 auto;
+        .sns-container {
+            text-align: center;
         }
-
-        .tiktok-embed-container {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-            min-height: 500px;
-        }
-
-        .tiktok-link-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: linear-gradient(45deg, var(--pink-primary), #ff0055);
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 16px 25px;
-            border-radius: 35px;
-            font-size: 1.05rem;
-            box-shadow: 0 6px 20px rgba(255, 51, 133, 0.35);
-            margin-top: 15px;
-        }
-
-        .sns-icons {
-            display: flex;
-            justify-content: center;
-            margin-top: 22px;
-        }
-
-        .sns-btn {
+        .tiktok-btn {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 12px 28px;
-            background: #ffffff;
-            color: var(--pink-dark);
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 0.95rem;
-            font-weight: bold;
-            border: 2px solid #ffb3c6;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
-
-        /* ⑤ PROJECT（全体に広げて大きなカード配置） */
-        .project-badge {
-            background: var(--pink-primary);
+            background-color: #000;
             color: #fff;
-            font-size: 0.85rem;
+            font-size: 1.2rem;
             font-weight: bold;
-            padding: 6px 18px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 12px;
-            letter-spacing: 0.1em;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 3px solid var(--accent-yellow);
+            box-shadow: 5px 5px 0px var(--main-pink);
+            transition: 0.2s;
+            margin-top: 20px;
+        }
+        .tiktok-btn:hover {
+            transform: scale(1.05);
         }
 
-        .project-title {
-            font-size: 1.45rem;
-            color: var(--pink-dark);
-            margin-bottom: 15px;
-            font-weight: bold;
-            line-height: 1.4;
-        }
-
-        .music-cards {
+        /* ⑤ PROJECT */
+        .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 25px;
-            margin-top: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
         }
-
-        .music-card {
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 18px;
-            border: 2px solid #ffccd5;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-        }
-
-        .music-card img {
+        .project-item img {
             width: 100%;
-            aspect-ratio: 1 / 1;
-            border-radius: 14px;
+            aspect-ratio: 1;
             object-fit: cover;
-            margin-bottom: 12px;
-            display: block;
+            border: 3px solid var(--text-main);
+            border-radius: 12px;
+            box-shadow: 5px 5px 0px #4fc3f7;
+            margin-bottom: 15px;
         }
-
-        .music-title {
-            font-size: 1.05rem;
+        .project-title {
+            font-size: 1.2rem;
             font-weight: bold;
-            color: var(--text-dark);
-        }
-
-        .music-sub {
-            font-size: 0.82rem;
-            color: var(--pink-primary);
-            font-weight: bold;
-            margin-top: 4px;
         }
 
         /* ⑥ CONTACT */
-        .contact-box {
-            max-width: 650px;
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 800px;
             margin: 0 auto;
         }
-
-        .form-group {
-            text-align: left;
-            margin-bottom: 18px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.9rem;
-            color: var(--text-sub);
-            margin-bottom: 6px;
-            font-weight: bold;
-        }
-
-        .form-group input, .form-group textarea {
+        .contact-form input, .contact-form textarea {
             width: 100%;
-            padding: 14px 16px;
-            border-radius: 14px;
-            border: 2px solid #ffccd5;
-            background: #ffffff;
-            color: var(--text-dark);
-            font-size: 0.95rem;
+            padding: 15px;
+            border: 3px solid var(--text-main);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            background-color: #fafafa;
         }
-
-        .form-group textarea {
-            height: 130px;
+        .contact-form textarea {
+            height: 150px;
             resize: vertical;
         }
-
-        .btn-submit {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, var(--pink-primary) 0%, #ff0055 100%);
+        .submit-btn {
+            background-color: var(--main-pink);
             color: #fff;
-            border: none;
-            border-radius: 35px;
+            font-size: 1.2rem;
             font-weight: bold;
-            font-size: 1.1rem;
+            padding: 15px;
+            border: 3px solid var(--text-main);
+            border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 6px 20px rgba(255, 51, 133, 0.35);
-            margin-top: 10px;
+            box-shadow: 5px 5px 0px var(--text-main);
         }
-
-        footer {
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--text-sub);
-            margin-top: 35px;
-            font-weight: bold;
+        .submit-btn:hover {
+            transform: translateY(2px);
+            box-shadow: 3px 3px 0px var(--text-main);
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-
+        
         <!-- ① HERO -->
-        <section class="hero">
-            <img src="./logo.png.PNG" alt="オタクのいちごさん オタいち153" class="main-logo">
+        <div class="hero">
+            <img src="./logo.png.PNG" alt="オタクのいちごさん" class="main-logo">
+            <br>
             <div class="hero-catch">身長153cmのこだわり全開コンビ🍓</div>
-        </section>
+        </div>
 
-        <!-- ② ABOUT -->
-        <section id="about">
-            <h2>ABOUT</h2>
-            
-            <div class="concept-box">
-                <p class="concept-text">【ユニット説明：オタクのいちごさん】
-
-身長153cmの（＝1-5-3で「いちご」🍓）通山栞と米沢のぞみによる、こだわりが強すぎる女優コンビ🎬
-
-プロレスとアイドル、それぞれの世界を愛してやまないオタク全開の2人が、人生のスケジュールを全力で駆け抜けるシュールでコミカルなショートドラマをお届け中！</p>
-
-                <div class="shrine-badge-box">
-                    <div class="shrine-title">⛩️「いちご一会オタク部」入部受付中！⛩️</div>
-                    <div class="shrine-desc">TikTokメインで活動中！部活動への入部は、TikTokギフトの「ハートミー」でお待ちしています❤️</div>
+        <!-- ② ABOUT（横幅を活かした配置） -->
+        <div class="pop-card">
+            <div class="flex-row">
+                <div class="flex-half">
+                    <h2>About Us</h2>
+                    <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 20px;">
+                        【ユニット説明：オタクのいちごさん】
+                    </p>
+                    <p class="about-text">
+                        身長153cmの（＝1-5-3で「いちご」🍓）通山栞と米沢のぞみによる、こだわりが強すぎる女優コンビ🎬<br><br>
+                        プロレスとアイドル、それぞれの世界を愛してやまないオタク全開の2人が、人生のスケジュールを全力で駆け抜けるシュールでコミカルなショートドラマをお届け中！
+                    </p>
+                </div>
+                <div class="flex-half" style="text-align: center;">
+                    <div style="background-color: #fff59d; padding: 30px; border: 4px solid #263238; border-radius: 16px; transform: rotate(3deg); box-shadow: 6px 6px 0px #ff4081;">
+                        <h3 style="color: #ff4081; font-size: 1.5rem; margin-bottom: 10px;">⛩️ いちご一会オタク部 ⛩️</h3>
+                        <p style="font-weight: bold;">TikTokメインで活動中！<br>部活動への入部は、TikTokギフトの「ハートミー」でお待ちしています❤️</p>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- ③ MEMBER -->
-        <section id="member">
-            <h2>MEMBER</h2>
+        <!-- ③ MEMBER（大きく並べるワイド配置） -->
+        <div class="pop-card">
+            <h2>Member</h2>
             <div class="member-grid">
                 <div class="member-card">
-                    <div class="member-img-wrap">
-                        <img src="./toriyama.png.JPG" alt="通山 栞">
-                    </div>
+                    <img src="./toriyama.png.JPG" alt="通山 栞" class="member-img">
                     <div class="member-name">通山 栞</div>
-                    <div class="member-role">Shiori Toriyama</div>
+                    <p style="margin-top: 10px; font-weight: bold;">Shiori Toriyama</p>
                 </div>
                 <div class="member-card">
-                    <div class="member-img-wrap">
-                        <img src="./yonezawa.png.jpg" alt="米沢 のぞみ">
-                    </div>
+                    <img src="./yonezawa.png.jpg" alt="米沢 のぞみ" class="member-img">
                     <div class="member-name">米沢 のぞみ</div>
-                    <div class="member-role">Nozomi Yonezawa</div>
+                    <p style="margin-top: 10px; font-weight: bold;">Nozomi Yonezawa</p>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- ④ TikTok EMBED & SNS -->
-        <section id="sns">
-            <h2>OFFICIAL TikTok & SNS</h2>
-            
-            <div class="tiktok-box">
-                <p style="font-size: 1rem; color: var(--pink-dark); font-weight: bold; margin-bottom: 10px;">
-                    <i class="fab fa-tiktok"></i> TikTokでショートドラマ配信中！
-                </p>
-
-                <div class="tiktok-embed-container">
-                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@otakuno153" data-unique-id="otakuno153" data-embed-type="creator" style="max-width: 100%; min-width: 280px;">
-                        <section>
-                            <a target="_blank" href="https://www.tiktok.com/@otakuno153?refer=creator_embed">@otakuno153</a>
-                        </section>
-                    </blockquote>
-                </div>
-
-                <a href="https://www.tiktok.com/@otakuno153?_r=1&_t=ZS-98qgNrLS7ID" target="_blank" class="tiktok-link-btn">
-                    <i class="fab fa-tiktok"></i> TikTokアプリで見る・「ハートミー」を送る❤️
-                </a>
-            </div>
-
-            <div class="sns-icons">
-                <a href="https://www.instagram.com/otakuno153?igsh=YmMxdm55OWVvODhy&utm_source=qr" class="sns-btn" target="_blank">
-                    <i class="fab fa-instagram" style="color: #e1306c;"></i> Instagramを見る
-                </a>
-            </div>
-        </section>
-
-        <!-- ⑤ PROJECT -->
-        <section id="project">
-            <span class="project-badge">PROJECT #01</span>
-            <div class="project-title">80年代アイドルプロジェクト！<br>「恋するオルゴール」</div>
-            
-            <p style="font-size: 0.95rem; color: var(--text-sub); font-weight: 500;">
-                あの頃の輝きとトキメキを今に復刻！<br>懐かしくも新しい80年代王道アイドルサウンドをお届けします。
+        <!-- ⑤ PROJECT（ワイド配置） -->
+        <div class="pop-card">
+            <h2>Project</h2>
+            <p style="font-weight: bold; margin-bottom: 30px; font-size: 1.1rem;">
+                🎤 80年代アイドルプロジェクト！「恋するオルゴール」<br>
+                あの頃の輝きとトキメキを今に復刻！懐かしくも新しい80年代王道アイドルサウンド。
             </p>
-
-            <div class="music-cards">
-                <div class="music-card">
+            <div class="project-grid">
+                <div class="project-item">
                     <img src="./hoshikuzu.png.PNG" alt="星屑パスポート">
-                    <div class="music-title">『星屑パスポート』</div>
-                    <div class="music-sub">恋するオルゴール デビュー曲</div>
+                    <div class="project-title">『星屑パスポート』</div>
+                    <p>デビュー曲</p>
                 </div>
-                <div class="music-card">
+                <div class="project-item">
                     <img src="./manatsu.jpg.PNG" alt="真夏のテレフォン">
-                    <div class="music-title">『真夏のテレフォン』</div>
-                    <div class="music-sub">2nd Single</div>
+                    <div class="project-title">『真夏のテレフォン』</div>
+                    <p>2nd Single</p>
                 </div>
             </div>
-        </section>
+        </div>
+
+        <!-- ④ TikTok & SNS -->
+        <div class="pop-card sns-container">
+            <h2>TikTok & SNS</h2>
+            <div style="margin: 30px 0;">
+                <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@otakuno153" data-unique-id="otakuno153" data-embed-type="creator" style="max-width: 100%; min-width: 280px; margin: 0 auto;">
+                    <section><a target="_blank" href="https://www.tiktok.com/@otakuno153?refer=creator_embed">@otakuno153</a></section>
+                </blockquote>
+            </div>
+            <a href="https://www.tiktok.com/@otakuno153?_r=1&_t=ZS-98qgNrLS7ID" target="_blank" class="tiktok-btn">
+                <i class="fab fa-tiktok"></i> アプリで見てハートミーを送る❤️
+            </a>
+            <div style="margin-top: 30px;">
+                <a href="https://www.instagram.com/otakuno153?igsh=YmMxdm55OWVvODhy&utm_source=qr" target="_blank" style="color: #e1306c; font-weight: bold; text-decoration: none; font-size: 1.2rem;">
+                    <i class="fab fa-instagram"></i> Instagramはこちら
+                </a>
+            </div>
+        </div>
 
         <!-- ⑥ CONTACT -->
-        <section id="contact">
-            <h2>CONTACT</h2>
-            
-            <div class="contact-box">
-                <p style="font-size: 0.9rem; color: var(--text-sub); margin-bottom: 20px; font-weight: 500;">
-                    出演依頼、取材、各種お仕事のご相談・お問合せは<br>以下のフォームよりお気軽にご連絡ください。
-                </p>
-
-                <form action="https://formspree.io/f/at.the.beginning.jy@gmail.com" method="POST">
-                    <div class="form-group">
-                        <label>お名前 / 貴社名 *</label>
-                        <input type="text" name="name" required placeholder="例：山田 太郎">
-                    </div>
-                    <div class="form-group">
-                        <label>メールアドレス *</label>
-                        <input type="email" name="email" required placeholder="example@example.com">
-                    </div>
-                    <div class="form-group">
-                        <label>お問い合わせ件名</label>
-                        <input type="text" name="subject" placeholder="例：イベント出演依頼について">
-                    </div>
-                    <div class="form-group">
-                        <label>お問い合わせ内容 *</label>
-                        <textarea name="message" required placeholder="ご自由にご記入ください"></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit">送信する</button>
-                </form>
-            </div>
-        </section>
-
-        <footer>
-            &copy; <span id="year"></span> オタクのいちごさん Official. All Rights Reserved.
-        </footer>
+        <div class="pop-card">
+            <h2 style="text-align: center; display: block; border: none;">Contact</h2>
+            <form action="https://formspree.io/f/at.the.beginning.jy@gmail.com" method="POST" class="contact-form">
+                <input type="text" name="name" required placeholder="お名前 / 貴社名">
+                <input type="email" name="email" required placeholder="メールアドレス">
+                <input type="text" name="subject" placeholder="お問い合わせ件名">
+                <textarea name="message" required placeholder="お問い合わせ内容をご自由にご記入ください"></textarea>
+                <button type="submit" class="submit-btn">送信する</button>
+            </form>
+        </div>
 
     </div>
 
     <script async src="https://www.tiktok.com/embed.js"></script>
-    <script>
-        document.getElementById("year").innerText = new Date().getFullYear();
-    </script>
 </body>
 </html>
