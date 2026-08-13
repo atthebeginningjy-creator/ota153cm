@@ -7,15 +7,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-dark: #12051b;
-            --bg-card: rgba(38, 12, 52, 0.85);
-            --pink-primary: #ff1493;
-            --pink-light: #ff69b4;
-            --strawberry-red: #ff0055;
-            --neon-yellow: #ffee00;
-            --neon-blue: #00ffff;
-            --text-main: #ffffff;
-            --text-sub: #f3e5f5;
+            --bg-dark: #0f051d;
+            --card-bg: rgba(28, 12, 45, 0.9);
+            --pink-main: #ff1493;
+            --pink-bright: #ff0055;
+            --gold-shrine: #ffd700;
+            --shrine-red: #d62828;
+            --neon-blue: #00f2fe;
+            --text-white: #ffffff;
+            --text-sub: #e2d9f3;
         }
 
         * {
@@ -24,51 +24,46 @@
             padding: 0;
         }
 
-        /* 浮遊・ホラー要素を完全に遮断 */
         body {
             background-color: var(--bg-dark);
             background-image: 
-                radial-gradient(circle at 10% 15%, rgba(255, 0, 85, 0.3) 0%, transparent 35%),
-                radial-gradient(circle at 90% 85%, rgba(0, 255, 255, 0.25) 0%, transparent 35%);
-            background-size: 100% 100%;
+                radial-gradient(circle at 50% 0%, rgba(255, 20, 147, 0.25) 0%, transparent 50%),
+                radial-gradient(circle at 80% 100%, rgba(0, 242, 254, 0.15) 0%, transparent 50%);
             background-attachment: fixed;
-            color: var(--text-main);
+            color: var(--text-white);
             font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
             line-height: 1.8;
             letter-spacing: 0.05em;
-            padding-bottom: 80px;
-            overflow-x: hidden;
+            padding-bottom: 60px;
         }
 
         .container {
             max-width: 680px;
             margin: 0 auto;
-            padding: 20px 15px;
-            position: relative;
+            padding: 25px 15px;
         }
 
+        /* セクション共通カードデザイン */
         section {
-            background: var(--bg-card);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-radius: 24px;
+            background: var(--card-bg);
+            border-radius: 20px;
             padding: 35px 22px;
-            margin-bottom: 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), inset 0 0 0 2px rgba(255, 105, 180, 0.3);
+            margin-bottom: 28px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1.5px solid rgba(255, 20, 147, 0.3);
             text-align: center;
-            border: 2px solid rgba(255, 0, 85, 0.4);
-            position: relative;
         }
 
+        /* 見出しデザイン */
         h2 {
-            font-size: 1.4rem;
-            color: var(--neon-yellow);
+            font-size: 1.35rem;
+            color: #ffffff;
             margin-bottom: 22px;
             position: relative;
             display: inline-block;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
             letter-spacing: 0.08em;
-            text-shadow: 0 0 12px rgba(255, 238, 0, 0.8), 0 0 5px #ff0055;
+            text-shadow: 0 0 10px rgba(255, 20, 147, 0.8);
         }
 
         h2::after {
@@ -77,32 +72,18 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 70px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--strawberry-red), var(--neon-yellow), var(--neon-blue));
-            border-radius: 4px;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--pink-main), var(--neon-blue));
+            border-radius: 2px;
         }
 
-        /* 自作・CSSドット絵風神社GIFモチーフ（枠の中に完全固定） */
-        .pixel-torii-icon {
-            display: inline-block;
-            font-size: 1.8rem;
-            animation: toriiPixelGlow 1.2s infinite alternate ease-in-out;
-            vertical-align: middle;
-            margin: 0 6px;
-        }
-
-        @keyframes toriiPixelGlow {
-            0% { transform: scale(1); filter: drop-shadow(0 0 2px #ff0055); }
-            100% { transform: scale(1.18); filter: drop-shadow(0 0 8px #ffee00); }
-        }
-
-        /* HERO */
+        /* ① HERO */
         .hero {
-            background: linear-gradient(180deg, rgba(255, 0, 85, 0.4) 0%, var(--bg-card) 100%);
+            background: linear-gradient(180deg, rgba(255, 0, 85, 0.3) 0%, var(--card-bg) 100%);
             padding: 40px 20px 30px 20px;
-            border: 2px solid var(--pink-light);
-            box-shadow: 0 20px 50px rgba(255, 0, 85, 0.4);
+            border: 2px solid var(--pink-main);
+            box-shadow: 0 15px 40px rgba(255, 0, 85, 0.3);
         }
 
         .main-logo {
@@ -111,88 +92,88 @@
             height: auto;
             display: block;
             margin: 0 auto 20px auto;
-            filter: drop-shadow(0 0 20px rgba(255, 20, 147, 0.8));
-            border-radius: 16px;
+            filter: drop-shadow(0 0 15px rgba(255, 20, 147, 0.7));
+            border-radius: 12px;
         }
 
         .hero-catch {
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: bold;
             color: #fff;
-            background: linear-gradient(90deg, var(--strawberry-red), var(--pink-primary));
-            padding: 10px 22px;
-            border-radius: 30px;
+            background: linear-gradient(90deg, var(--pink-bright), var(--pink-main));
+            padding: 8px 20px;
+            border-radius: 25px;
             display: inline-block;
-            box-shadow: 0 5px 20px rgba(255, 0, 85, 0.6);
-            border: 1px solid #fff;
+            box-shadow: 0 4px 15px rgba(255, 0, 85, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.8);
         }
 
-        /* ABOUT */
+        /* ② ABOUT */
         .concept-box {
-            background: rgba(0, 0, 0, 0.45);
-            border-radius: 18px;
-            padding: 24px 20px;
-            border: 1.5px solid rgba(255, 105, 180, 0.3);
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 16px;
+            padding: 22px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             text-align: left;
         }
 
         .concept-text {
-            font-size: 0.95rem;
+            font-size: 0.93rem;
             color: var(--text-sub);
             white-space: pre-wrap;
             line-height: 1.9;
         }
 
-        /* 和風神社モチーフバナー */
-        .club-badge-box {
+        /* 神社＆オタク部・和風プレミアムバナー */
+        .shrine-badge-box {
             margin-top: 22px;
-            background: linear-gradient(135deg, rgba(255, 0, 85, 0.35), rgba(255, 238, 0, 0.25));
-            border: 2px solid var(--neon-yellow);
+            background: linear-gradient(135deg, rgba(214, 40, 40, 0.35) 0%, rgba(30, 10, 40, 0.8) 100%);
+            border: 2px solid var(--gold-shrine);
             border-radius: 16px;
-            padding: 18px;
+            padding: 20px 15px;
             text-align: center;
-            box-shadow: 0 0 15px rgba(255, 238, 0, 0.3);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+            position: relative;
         }
 
-        .club-title {
-            color: var(--neon-yellow);
+        .shrine-title {
+            color: var(--gold-shrine);
             font-weight: bold;
             font-size: 1.05rem;
             margin-bottom: 6px;
-            text-shadow: 0 0 8px rgba(0,0,0,0.8);
+            letter-spacing: 0.05em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
         }
 
-        .club-desc {
-            font-size: 0.88rem;
-            color: #fff;
+        .shrine-desc {
+            font-size: 0.85rem;
+            color: #ffffff;
             font-weight: 500;
         }
 
-        /* MEMBER */
+        /* ③ MEMBER */
         .member-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 18px;
-            margin-top: 15px;
+            gap: 16px;
+            margin-top: 10px;
         }
 
         .member-card {
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 15px;
-            border: 1.5px solid rgba(255, 105, 180, 0.4);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 18px;
+            padding: 14px;
+            border: 1px solid rgba(255, 20, 147, 0.3);
         }
 
         .member-img-wrap {
             width: 100%;
             aspect-ratio: 3 / 4;
-            border-radius: 16px;
+            border-radius: 14px;
             overflow: hidden;
-            margin-bottom: 12px;
-            background-color: #1a0d24;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            border: 2px solid rgba(255,255,255,0.2);
+            margin-bottom: 10px;
+            background-color: #1a0a2a;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .member-img-wrap img {
@@ -204,30 +185,29 @@
         }
 
         .member-name {
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: bold;
-            color: var(--text-main);
+            color: var(--text-white);
         }
 
         .member-role {
-            font-size: 0.8rem;
-            color: var(--pink-light);
+            font-size: 0.78rem;
+            color: var(--pink-main);
             margin-top: 2px;
         }
 
-        /* TikTok & EMBED */
+        /* ④ TikTok & SNS */
         .tiktok-box {
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 20px;
-            padding: 24px 16px;
-            border: 2px solid var(--pink-primary);
-            box-shadow: 0 0 20px rgba(255, 20, 147, 0.4);
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 18px;
+            padding: 20px 14px;
+            border: 1.5px solid var(--pink-main);
         }
 
         .tiktok-embed-container {
             display: flex;
             justify-content: center;
-            margin: 20px 0;
+            margin: 18px 0;
             min-height: 500px;
         }
 
@@ -235,153 +215,140 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            background: linear-gradient(45deg, #00f2fe, #ff0050, #ffee00);
-            background-size: 200% 200%;
-            animation: gradientBtn 3s ease infinite;
+            gap: 8px;
+            background: linear-gradient(45deg, var(--pink-bright), var(--pink-main));
             color: #fff;
             text-decoration: none;
             font-weight: bold;
-            padding: 16px 24px;
-            border-radius: 35px;
-            font-size: 1.05rem;
-            box-shadow: 0 6px 25px rgba(255, 0, 80, 0.6);
-            margin-top: 15px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
-        }
-
-        @keyframes gradientBtn {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            padding: 14px 20px;
+            border-radius: 30px;
+            font-size: 0.98rem;
+            box-shadow: 0 5px 20px rgba(255, 0, 85, 0.5);
+            margin-top: 12px;
         }
 
         .sns-icons {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-top: 20px;
+            margin-top: 18px;
         }
 
         .sns-btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 24px;
-            background: rgba(255, 255, 255, 0.12);
-            color: var(--text-main);
+            padding: 10px 22px;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-white);
             text-decoration: none;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            border: 1.5px solid rgba(255, 105, 180, 0.4);
+            border-radius: 20px;
+            font-size: 0.88rem;
+            border: 1px solid rgba(255, 250, 255, 0.2);
         }
 
-        /* PROJECT */
+        /* ⑤ PROJECT */
         .project-badge {
-            background: linear-gradient(90deg, var(--strawberry-red), var(--pink-primary));
+            background: var(--pink-bright);
             color: #fff;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: bold;
-            padding: 6px 18px;
-            border-radius: 20px;
+            padding: 4px 14px;
+            border-radius: 15px;
             display: inline-block;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             letter-spacing: 0.1em;
-            box-shadow: 0 4px 10px rgba(255,0,85,0.4);
         }
 
         .project-title {
-            font-size: 1.3rem;
-            color: var(--neon-yellow);
-            margin-bottom: 15px;
+            font-size: 1.25rem;
+            color: var(--gold-shrine);
+            margin-bottom: 12px;
             font-weight: bold;
             line-height: 1.4;
-            text-shadow: 0 0 10px rgba(255, 238, 0, 0.6);
         }
 
         .music-cards {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 18px;
-            margin-top: 22px;
+            gap: 16px;
+            margin-top: 18px;
         }
 
         .music-card {
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 18px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 16px;
             padding: 12px;
-            border: 1.5px solid var(--neon-yellow);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 215, 0, 0.4);
         }
 
         .music-card img {
             width: 100%;
             aspect-ratio: 1 / 1;
-            border-radius: 12px;
+            border-radius: 10px;
             object-fit: cover;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             display: block;
         }
 
         .music-title {
-            font-size: 0.92rem;
+            font-size: 0.88rem;
             font-weight: bold;
-            color: var(--text-main);
+            color: var(--text-white);
         }
 
         .music-sub {
-            font-size: 0.75rem;
-            color: var(--pink-light);
+            font-size: 0.72rem;
+            color: var(--pink-main);
             margin-top: 2px;
         }
 
-        /* CONTACT */
+        /* ⑥ CONTACT */
         .form-group {
             text-align: left;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .form-group label {
             display: block;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: var(--text-sub);
-            margin-bottom: 6px;
+            margin-bottom: 5px;
         }
 
         .form-group input, .form-group textarea {
             width: 100%;
-            padding: 14px 16px;
-            border-radius: 14px;
-            border: 1.5px solid rgba(255, 105, 180, 0.3);
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 20, 147, 0.3);
             background: rgba(0, 0, 0, 0.5);
             color: #fff;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .form-group textarea {
-            height: 120px;
+            height: 110px;
             resize: vertical;
         }
 
         .btn-submit {
             width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, var(--pink-primary) 0%, var(--strawberry-red) 100%);
+            padding: 14px;
+            background: linear-gradient(135deg, var(--pink-main) 0%, var(--pink-bright) 100%);
             color: #fff;
             border: none;
-            border-radius: 35px;
+            border-radius: 30px;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1rem;
             cursor: pointer;
-            box-shadow: 0 6px 25px rgba(255, 0, 85, 0.6);
-            margin-top: 10px;
+            box-shadow: 0 5px 20px rgba(255, 0, 85, 0.5);
+            margin-top: 8px;
         }
 
         footer {
             text-align: center;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             color: var(--text-sub);
-            margin-top: 40px;
+            margin-top: 30px;
         }
     </style>
 </head>
@@ -397,7 +364,7 @@
 
         <!-- ② ABOUT -->
         <section id="about">
-            <h2>🤼‍♀️ ABOUT 🎤</h2>
+            <h2>ABOUT</h2>
             
             <div class="concept-box">
                 <p class="concept-text">【ユニット説明：オタクのいちごさん】
@@ -406,21 +373,17 @@
 
 プロレスとアイドル、それぞれの世界を愛してやまないオタク全開の2人が、人生のスケジュールを全力で駆け抜けるシュールでコミカルなショートドラマをお届け中！</p>
 
-                <!-- ピコピコ動く鳥居が入った神社風ワンポイントバナー -->
-                <div class="club-badge-box">
-                    <div class="club-title">
-                        <span class="pixel-torii-icon">⛩️</span>
-                        「いちご一会オタク部」入部受付中！
-                        <span class="pixel-torii-icon">⛩️</span>
-                    </div>
-                    <div class="club-desc">TikTokメインで活動中！部活動への入部は、TikTokギフトの「ハートミー」でお待ちしています❤️</div>
+                <!-- 和風・神社デザインバナー -->
+                <div class="shrine-badge-box">
+                    <div class="shrine-title">⛩️「いちご一会オタク部」入部受付中！⛩️</div>
+                    <div class="shrine-desc">TikTokメインで活動中！部活動への入部は、TikTokギフトの「ハートミー」でお待ちしています❤️</div>
                 </div>
             </div>
         </section>
 
         <!-- ③ MEMBER -->
         <section id="member">
-            <h2>✨ MEMBER ✨</h2>
+            <h2>MEMBER</h2>
             <div class="member-grid">
                 <div class="member-card">
                     <div class="member-img-wrap">
@@ -441,10 +404,10 @@
 
         <!-- ④ TikTok EMBED & SNS -->
         <section id="sns">
-            <h2>🎬 OFFICIAL TikTok & SNS 📲</h2>
+            <h2>OFFICIAL TikTok & SNS</h2>
             
             <div class="tiktok-box">
-                <p style="font-size: 0.95rem; color: var(--neon-yellow); font-weight: bold; margin-bottom: 10px;">
+                <p style="font-size: 0.9rem; color: #ffee00; font-weight: bold; margin-bottom: 8px;">
                     <i class="fab fa-tiktok"></i> TikTokでショートドラマ配信中！
                 </p>
 
@@ -473,7 +436,7 @@
             <span class="project-badge">PROJECT #01</span>
             <div class="project-title">80年代アイドルプロジェクト！<br>「恋するオルゴール」</div>
             
-            <p style="font-size: 0.9rem; color: var(--text-sub);">
+            <p style="font-size: 0.88rem; color: var(--text-sub);">
                 あの頃の輝きとトキメキを今に復刻！<br>懐かしくも新しい80年代王道アイドルサウンドをお届けします。
             </p>
 
@@ -493,9 +456,9 @@
 
         <!-- ⑥ CONTACT -->
         <section id="contact">
-            <h2>✉️ CONTACT ✉️</h2>
+            <h2>CONTACT</h2>
             
-            <p style="font-size: 0.88rem; color: var(--text-sub); margin-bottom: 20px;">
+            <p style="font-size: 0.85rem; color: var(--text-sub); margin-bottom: 18px;">
                 出演依頼、取材、各種お仕事のご相談・お問合せは<br>以下のフォームよりお気軽にご連絡ください。
             </p>
 
