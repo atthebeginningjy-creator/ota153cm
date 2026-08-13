@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
+            /* 背景はB案のダークサイバー仕様 */
             --bg-dark: #0d0d12;
             --neon-pink: #ff0055;
             --neon-cyan: #00f0ff;
@@ -26,6 +27,7 @@
 
         body {
             background-color: var(--bg-dark);
+            /* B案のサイバー空間風グリッド背景 */
             background-image: 
                 linear-gradient(rgba(0, 240, 255, 0.04) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 240, 255, 0.04) 1px, transparent 1px);
@@ -38,12 +40,14 @@
             padding-bottom: 80px;
         }
 
+        /* 画面を広く使うワイドコンテナ（最大1200px） */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
         }
 
+        /* ----- メインロゴ：確実に大きく表示（最大900px） ----- */
         .hero {
             text-align: center;
             padding: 40px 20px 60px 20px;
@@ -51,7 +55,7 @@
         }
         .main-logo {
             width: 100% !important;
-            max-width: 900px !important;
+            max-width: 900px !important; /* 強制的に大きく拡大 */
             height: auto !important;
             display: inline-block !important;
             filter: drop-shadow(0 0 20px rgba(255, 0, 85, 0.6));
@@ -70,6 +74,7 @@
             transform: rotate(-1deg);
         }
 
+        /* ----- A案のポップで可愛いカード型 ＋ B案のダークサイバー感の融合 ----- */
         .pop-card {
             background-color: var(--card-bg);
             border: 4px solid var(--neon-cyan);
@@ -90,6 +95,7 @@
             padding-bottom: 5px;
         }
 
+        /* 横並びレイアウト用クラス */
         .flex-row {
             display: flex;
             flex-wrap: wrap;
@@ -102,6 +108,7 @@
             text-align: left;
         }
 
+        /* ② ABOUT（日本語解説） */
         .about-text {
             font-size: 1.1rem;
             font-weight: 500;
@@ -112,6 +119,7 @@
             line-height: 2;
         }
 
+        /* ③ MEMBER（ワイド配置） */
         .member-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -144,6 +152,7 @@
             box-shadow: 0 0 10px var(--neon-pink);
         }
 
+        /* ⑤ PROJECT（ワイド配置） */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -171,6 +180,7 @@
             color: #fff;
         }
 
+        /* ④ TikTok & SNS */
         .sns-container {
             text-align: center;
         }
@@ -202,34 +212,26 @@
             box-shadow: 0 0 15px var(--neon-pink);
         }
 
-        /* ⑥ CONTACT フォームデザイン */
+        /* ⑥ CONTACT */
         .contact-form {
-            max-width: 700px;
-            margin: 0 auto;
             display: flex;
             flex-direction: column;
             gap: 20px;
-            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
         }
-        .contact-form input,
-        .contact-form textarea {
+        .contact-form input, .contact-form textarea {
             width: 100%;
             padding: 15px;
-            background: rgba(0, 0, 0, 0.5);
-            border: 2px solid var(--neon-cyan);
+            border: 3px solid var(--neon-cyan);
             border-radius: 8px;
-            color: #fff;
             font-size: 1rem;
-            font-family: inherit;
-        }
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: var(--accent-yellow);
-            box-shadow: 0 0 10px rgba(255, 213, 0, 0.5);
+            font-weight: bold;
+            background-color: #000;
+            color: #fff;
         }
         .contact-form textarea {
-            height: 180px;
+            height: 150px;
             resize: vertical;
         }
         .submit-btn {
@@ -243,12 +245,10 @@
             cursor: pointer;
             box-shadow: 5px 5px 0px var(--neon-cyan);
             transition: 0.2s;
-            margin-top: 10px;
-            width: 100%;
         }
         .submit-btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 15px var(--neon-pink);
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px var(--neon-pink);
         }
 
         footer {
@@ -263,14 +263,14 @@
 
     <div class="container">
         
-        <!-- ① HERO -->
+        <!-- ① HERO（大きく表示されるロゴ） -->
         <div class="hero">
             <img src="./logo.png.PNG" alt="オタクのいちごさん" class="main-logo">
             <br>
             <div class="hero-catch">身長153cmのこだわり全開コンビ🍓</div>
         </div>
 
-        <!-- ② ABOUT -->
+        <!-- ② ABOUT（A案のカード型 ＋ 日本語説明） -->
         <div class="pop-card">
             <div class="flex-row">
                 <div class="flex-half">
@@ -292,7 +292,7 @@
             </div>
         </div>
 
-        <!-- ③ MEMBER -->
+        <!-- ③ MEMBER（ワイド配置） -->
         <div class="pop-card">
             <h2>Member</h2>
             <div class="member-grid">
@@ -309,7 +309,7 @@
             </div>
         </div>
 
-        <!-- ⑤ PROJECT -->
+        <!-- ⑤ PROJECT（ワイド配置） -->
         <div class="pop-card">
             <h2>Project</h2>
             <p style="font-weight: bold; margin-bottom: 30px; font-size: 1.1rem; color: #fff;">
@@ -352,13 +352,12 @@
             </div>
         </div>
 
-        <!-- ⑥ CONTACT（Formspree版） -->
-        <div class="pop-card" style="text-align: center;">
-            <h2 style="display: block; border: none; margin-bottom: 15px;">Contact</h2>
-            <p style="font-weight: bold; margin-bottom: 30px; color: #b0c4de; font-size: 1.05rem;">
+        <!-- ⑥ CONTACT（Formspree版に切り替え） -->
+        <div class="pop-card">
+            <h2 style="text-align: center; display: block; border: none; margin-bottom: 15px;">Contact</h2>
+            <p style="text-align: center; font-weight: bold; margin-bottom: 25px; color: #b0c4de; font-size: 1.05rem;">
                 出演のご依頼やお問い合わせは、以下のフォームよりお気軽にご連絡ください！🍓
             </p>
-            
             <form action="https://formspree.io/f/mbgrklzg" method="POST" class="contact-form">
                 <input type="text" name="name" required placeholder="お名前 / 貴社名">
                 <input type="email" name="email" required placeholder="メールアドレス">
