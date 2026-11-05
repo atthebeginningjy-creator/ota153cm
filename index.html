@@ -148,10 +148,11 @@
             box-shadow: 0 0 10px var(--neon-pink);
         }
 
+        /* 4枚並びに対応するグリッド */
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
         }
         .project-item {
             background: rgba(0,0,0,0.4);
@@ -159,6 +160,7 @@
             border-radius: 12px;
             padding: 15px;
             box-shadow: 6px 6px 0px var(--accent-yellow);
+            text-align: center;
         }
         .project-item img {
             width: 100%;
@@ -170,24 +172,120 @@
             display: block;
         }
         .project-title {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: bold;
             color: #fff;
         }
 
+        /* イベントバナー＆フライヤー表示用スタイル */
         .event-banner {
-            margin-top: 35px;
-            background: linear-gradient(135deg, rgba(255, 0, 85, 0.15), rgba(0, 240, 255, 0.15));
+            margin-top: 45px;
+            background: linear-gradient(135deg, rgba(255, 0, 85, 0.18), rgba(0, 240, 255, 0.18));
             border: 3px solid var(--accent-yellow);
-            border-radius: 12px;
-            padding: 25px;
+            border-radius: 16px;
+            padding: 35px 25px;
             text-align: center;
-            box-shadow: 0 0 15px rgba(255, 213, 0, 0.3);
+            box-shadow: 0 0 20px rgba(255, 213, 0, 0.35);
         }
         .event-banner h3 {
             color: var(--accent-yellow);
-            font-size: 1.3rem;
+            font-size: 1.6rem;
             margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 213, 0, 0.5);
+        }
+        .event-sub-badge {
+            display: inline-block;
+            background: var(--neon-pink);
+            color: #fff;
+            font-weight: bold;
+            padding: 4px 18px;
+            border-radius: 30px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            border: 2px solid #fff;
+            box-shadow: 0 0 10px var(--neon-pink);
+        }
+        .event-content-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        .event-flyer-box {
+            flex: 1 1 320px;
+            max-width: 460px;
+        }
+        .event-flyer-img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 3px solid #fff;
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.6);
+            display: block;
+        }
+        .event-details-box {
+            flex: 1 1 320px;
+            max-width: 520px;
+            text-align: left;
+            background: rgba(0, 0, 0, 0.55);
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid var(--neon-cyan);
+        }
+        .event-detail-row {
+            margin-bottom: 18px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+            padding-bottom: 12px;
+        }
+        .event-detail-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .event-label {
+            color: var(--neon-cyan);
+            font-weight: bold;
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .event-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+        .time-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 8px;
+        }
+        .time-box {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--accent-yellow);
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+        .time-box-title {
+            color: var(--accent-yellow);
+            font-weight: bold;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+        .ticket-notice {
+            margin-top: 25px;
+            background: rgba(255, 0, 85, 0.25);
+            border: 2px dashed var(--accent-yellow);
+            border-radius: 10px;
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: #fff;
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.3);
         }
 
         .sns-container {
@@ -273,6 +371,19 @@
             margin-top: 50px;
             font-weight: bold;
         }
+
+        @media (max-width: 600px) {
+            .pop-card {
+                padding: 25px 15px;
+            }
+            .hero-catch {
+                font-size: 1.1rem;
+                padding: 10px 20px;
+            }
+            .time-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -328,28 +439,72 @@
                 オタクのいちごさんプロジェクト第一弾！<br>
                 🎤 80年代アイドルプロジェクト！「恋するオルゴール」<br>
                 <span style="color: var(--neon-pink); display: block; margin: 5px 0;">俳優が本気でアイドルを演じたら・・・</span>
-                <span style="font-size: 0.95rem; color: #b0c4de;">あの頃の輝きとトキメキを今に復刻！懐かしくも新しい80年代王道アイドルサウンド。</span>
+                <span style="font-size: 0.95rem; color: #b0c4de;">あの頃の輝きとトキメキを今に復刻！懐かしくも新しい80年代王道アイドルサウンド4部作。</span>
             </p>
             <div class="project-grid">
                 <div class="project-item">
                     <img src="./hoshikuzu.png.PNG" alt="星屑パスポート">
                     <div class="project-title">『星屑パスポート』</div>
-                    <p style="color: var(--neon-cyan); font-size: 0.9rem;">デビュー曲</p>
+                    <p style="color: var(--neon-cyan); font-size: 0.9rem;">デビュー曲 (1st Single)</p>
                 </div>
                 <div class="project-item">
                     <img src="./manatsu.jpg.PNG" alt="真夏のテレフォン">
                     <div class="project-title">『真夏のテレフォン』</div>
                     <p style="color: var(--neon-cyan); font-size: 0.9rem;">2nd Single</p>
                 </div>
+                <div class="project-item">
+                    <img src="./ベルが鳴る前にpng.jpg" alt="ベルが鳴る前に">
+                    <div class="project-title">『ベルが鳴る前に』</div>
+                    <p style="color: var(--neon-cyan); font-size: 0.9rem;">3rd Single</p>
+                </div>
+                <div class="project-item">
+                    <img src="./恋するオルゴールジャケット.png" alt="恋するオルゴール">
+                    <div class="project-title">『恋するオルゴール』</div>
+                    <p style="color: var(--neon-cyan); font-size: 0.9rem;">4th Single</p>
+                </div>
             </div>
 
             <div class="event-banner">
-                <h3>🗓️ イベント情報</h3>
-                <p style="font-size: 1.1rem; font-weight: bold; color: #fff;">
-                    9月22日にイベント決定。
+                <div class="event-sub-badge">✨ 4部作完結記念 ONE MAN LIVE ✨</div>
+                <h3>🗓️ 恋するオルゴール 卒業コンサート開催決定！</h3>
+                <p style="font-size: 1.15rem; font-weight: bold; color: #fff; margin-bottom: 20px;">
+                    「恋するオルゴール 〜あなたと奏でる、その先へ〜」
                 </p>
-                <div style="font-size: 1.1rem; color: var(--accent-yellow); font-style: italic; letter-spacing: 0.15em; padding: 15px 0; margin-top: 15px; background: rgba(0, 0, 0, 0.3); border-radius: 8px; border: 1px dashed rgba(255, 213, 0, 0.5);">
-                    詳細はComing Soon...
+
+                <div class="event-content-wrap">
+                    <div class="event-flyer-box">
+                        <img src="./きらめく「恋するオルゴール」ライブポスター.png" alt="恋するオルゴール 卒業コンサート フライヤー" class="event-flyer-img">
+                    </div>
+                    
+                    <div class="event-details-box">
+                        <div class="event-detail-row">
+                            <span class="event-label"><i class="far fa-calendar-alt"></i> 開催日</span>
+                            <div class="event-value" style="font-size: 1.4rem; color: var(--accent-yellow);">2027年1月9日(土)</div>
+                        </div>
+
+                        <div class="event-detail-row">
+                            <span class="event-label"><i class="fas fa-map-marker-alt"></i> 会場</span>
+                            <div class="event-value">川崎市国際交流センターホール</div>
+                        </div>
+
+                        <div class="event-detail-row">
+                            <span class="event-label"><i class="far fa-clock"></i> 公演時間</span>
+                            <div class="time-grid">
+                                <div class="time-box">
+                                    <div class="time-box-title">☀️ 昼公演</div>
+                                    <div style="font-size: 0.95rem; font-weight: bold;">12:00 開場<br>13:00 開演</div>
+                                </div>
+                                <div class="time-box">
+                                    <div class="time-box-title">🌙 夜公演</div>
+                                    <div style="font-size: 0.95rem; font-weight: bold;">16:30 開場<br>17:30 開演</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ticket-notice">
+                            🎫 チケット購入は<span style="color: var(--accent-yellow); font-size: 1.25rem;">11月10日</span>より<br>当HPでも購入開始予定！
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
