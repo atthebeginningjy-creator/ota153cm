@@ -148,7 +148,6 @@
             box-shadow: 0 0 10px var(--neon-pink);
         }
 
-        /* 4枚並びに対応するグリッド */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -177,7 +176,6 @@
             color: #fff;
         }
 
-        /* イベントバナー＆フライヤー表示用スタイル */
         .event-banner {
             margin-top: 45px;
             background: linear-gradient(135deg, rgba(255, 0, 85, 0.18), rgba(0, 240, 255, 0.18));
@@ -275,17 +273,61 @@
             font-size: 0.95rem;
             margin-bottom: 4px;
         }
-        .ticket-notice {
+
+        /* チケット特設サイト連動エリア */
+        .ticket-area {
             margin-top: 25px;
-            background: rgba(255, 0, 85, 0.25);
-            border: 2px dashed var(--accent-yellow);
-            border-radius: 10px;
-            padding: 15px 20px;
             text-align: center;
-            font-size: 1.15rem;
+        }
+        .ticket-locked-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px dashed var(--accent-yellow);
+            border-radius: 12px;
+            padding: 18px 15px;
+        }
+        .countdown-timer {
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: var(--neon-cyan);
+            margin: 8px 0 12px 0;
+            letter-spacing: 0.05em;
+            text-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
+        }
+        .ticket-btn-disabled {
+            display: inline-block;
+            width: 100%;
+            background-color: #3a3a48;
+            color: #bbb;
+            font-size: 1.05rem;
             font-weight: bold;
+            padding: 14px 20px;
+            border-radius: 50px;
+            border: 2px solid #666;
+            cursor: not-allowed;
+        }
+        .ticket-unlocked-box {
+            display: none;
+        }
+        .ticket-btn-active {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            background: linear-gradient(90deg, #ff0055, #ff4da6);
             color: #fff;
-            box-shadow: 0 0 15px rgba(255, 0, 85, 0.3);
+            font-size: 1.2rem;
+            font-weight: 900;
+            padding: 16px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 3px solid #fff;
+            box-shadow: 0 0 20px var(--neon-pink), 5px 5px 0px var(--accent-yellow);
+            transition: 0.2s;
+        }
+        .ticket-btn-active:hover {
+            transform: scale(1.03) translateY(-2px);
+            box-shadow: 0 0 30px var(--neon-pink), 0 0 15px var(--accent-yellow);
         }
 
         .sns-container {
@@ -383,6 +425,10 @@
             .time-grid {
                 grid-template-columns: 1fr;
             }
+            .ticket-btn-active {
+                font-size: 1.05rem;
+                padding: 14px 15px;
+            }
         }
     </style>
 </head>
@@ -445,7 +491,7 @@
                 <div class="project-item">
                     <img src="./hoshikuzu.png.PNG" alt="星屑パスポート">
                     <div class="project-title">『星屑パスポート』</div>
-                    <p style="color: var(--neon-cyan); font-size: 0.9rem;">デビュー曲 (1st Single)</p>
+                    <p style="color: var(--neon-cyan); font-size: 0.9rem;">デビュー曲</p>
                 </div>
                 <div class="project-item">
                     <img src="./manatsu.jpg.PNG" alt="真夏のテレフォン">
@@ -501,9 +547,32 @@
                             </div>
                         </div>
 
-                        <div class="ticket-notice">
-                            🎫 チケット購入は<span style="color: var(--accent-yellow); font-size: 1.25rem;">11月10日</span>より<br>当HPでも購入開始予定！
+                        <!-- 11月10日 12:00 自動解放チケットエリア -->
+                        <div class="ticket-area">
+                            <!-- 11/10 12:00 前の表示 -->
+                            <div id="ticket-locked" class="ticket-locked-box">
+                                <div style="font-weight: bold; color: var(--accent-yellow); font-size: 1.05rem;">
+                                    🎫 11月10日(火) 12:00よりチケット発売開始！
+                                </div>
+                                <div id="countdown-display" class="countdown-timer">
+                                    発売開始までお待ちください
+                                </div>
+                                <div class="ticket-btn-disabled">
+                                    <i class="fas fa-lock"></i> 11/10 12:00 チケットサイト解放
+                                </div>
+                            </div>
+
+                            <!-- 11/10 12:00 以降の表示 -->
+                            <div id="ticket-unlocked" class="ticket-unlocked-box">
+                                <p style="color: var(--accent-yellow); font-weight: bold; font-size: 1rem; margin-bottom: 10px;">
+                                    ＼ チケット特設サイトにて好評発売中！ ／
+                                </p>
+                                <a href="https://atthebeginningjy-creator.github.io/koioru-Ticket/" target="_blank" rel="noopener noreferrer" class="ticket-btn-active">
+                                    <i class="fas fa-ticket-alt"></i> チケット購入はこちら
+                                </a>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -565,6 +634,40 @@
     <script async src="https://www.tiktok.com/embed.js"></script>
     <script>
         document.getElementById("year").innerText = new Date().getFullYear();
+
+        // 2026年11月10日 12:00:00 (日本時間) にチケットサイトを自動解放
+        const releaseTime = new Date("2026-11-10T12:00:00+09:00").getTime();
+        const lockedBox = document.getElementById("ticket-locked");
+        const unlockedBox = document.getElementById("ticket-unlocked");
+        const countdownDisplay = document.getElementById("countdown-display");
+
+        function updateTicketStatus() {
+            const now = new Date().getTime();
+            const diff = releaseTime - now;
+
+            if (diff <= 0) {
+                // 11月10日 12:00以降は購入ボタンを表示
+                lockedBox.style.display = "none";
+                unlockedBox.style.display = "block";
+            } else {
+                // 11月10日 12:00前はカウントダウンを表示
+                lockedBox.style.display = "block";
+                unlockedBox.style.display = "none";
+
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                const hStr = String(hours).padStart(2, '0');
+                const mStr = String(minutes).padStart(2, '0');
+                const sStr = String(seconds).padStart(2, '0');
+
+                countdownDisplay.innerText = `解放まであと ${hStr}時間${mStr}分${sStr}秒`;
+            }
+        }
+
+        updateTicketStatus();
+        setInterval(updateTicketStatus, 1000);
     </script>
 </body>
 </html>
