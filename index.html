@@ -8,7 +8,7 @@
     <meta http-equiv="Expires" content="0">
     
     <title>オタクのいちごさん 公式サイト｜身長153cmの女優コンビ</title>
-    <meta name="description" content="身長153cmの通山栞と米沢のぞみによるこだわり全開の女優コンビ「オタクのいちごさん」の公式サイト。80年代アイドルプロジェクト「恋するオルゴール」やTikTok・SNS、イベント情報をお届け！">
+    <meta name="description" content="身長153cmの通山栞と米沢のぞみによるこだわり全開の女優コンビ「オタクのいちごさん」の公式サイト。80年代アイドルプロジェクト「恋するオルゴール」やTikTok・SNS、イベント・メディア情報をお届け！">
     <meta name="keywords" content="オタクのいちごさん,通山栞,米沢のぞみ,恋するオルゴール,80年代アイドル,女優">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -330,6 +330,65 @@
             box-shadow: 0 0 30px var(--neon-pink), 0 0 15px var(--accent-yellow);
         }
 
+        /* メディア情報（プレスリリース）用スタイル */
+        .media-box {
+            background: rgba(255, 255, 255, 0.04);
+            border: 2px solid var(--accent-yellow);
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            box-shadow: 6px 6px 0px rgba(255, 213, 0, 0.25);
+        }
+        .media-info {
+            flex: 1 1 300px;
+            text-align: left;
+        }
+        .media-badge {
+            display: inline-block;
+            background-color: var(--neon-pink);
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: bold;
+            padding: 3px 12px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+            border: 1px solid #fff;
+        }
+        .media-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        .media-desc {
+            font-size: 0.95rem;
+            color: #b0c4de;
+        }
+        .media-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--accent-yellow);
+            color: #000;
+            font-size: 1.1rem;
+            font-weight: 900;
+            padding: 14px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 3px solid #fff;
+            box-shadow: 4px 4px 0px var(--neon-pink);
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+        .media-btn:hover {
+            transform: scale(1.03) translateY(-2px);
+            box-shadow: 0 0 15px var(--accent-yellow);
+        }
+
         .sns-container {
             text-align: center;
         }
@@ -428,6 +487,10 @@
             .ticket-btn-active {
                 font-size: 1.05rem;
                 padding: 14px 15px;
+            }
+            .media-btn {
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
@@ -547,9 +610,7 @@
                             </div>
                         </div>
 
-                        <!-- 11月10日 12:00 自動解放チケットエリア -->
                         <div class="ticket-area">
-                            <!-- 11/10 12:00 前の表示 -->
                             <div id="ticket-locked" class="ticket-locked-box">
                                 <div style="font-weight: bold; color: var(--accent-yellow); font-size: 1.05rem;">
                                     🎫 11月10日(火) 12:00よりチケット発売開始！
@@ -562,7 +623,6 @@
                                 </div>
                             </div>
 
-                            <!-- 11/10 12:00 以降の表示 -->
                             <div id="ticket-unlocked" class="ticket-unlocked-box">
                                 <p style="color: var(--accent-yellow); font-weight: bold; font-size: 1rem; margin-bottom: 10px;">
                                     ＼ チケット特設サイトにて好評発売中！ ／
@@ -575,6 +635,24 @@
 
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- メディア情報（プレスリリース）セクション -->
+        <div class="pop-card">
+            <h2>Media</h2>
+            <p style="font-weight: bold; margin-bottom: 20px; font-size: 1.1rem; color: var(--neon-pink);">
+                【メディア情報・プレスリリース】
+            </p>
+            <div class="media-box">
+                <div class="media-info">
+                    <span class="media-badge">PRESS RELEASE</span>
+                    <div class="media-title">公式プレスリリースが公開されました！</div>
+                    <p class="media-desc">「オタクのいちごさん」および「恋するオルゴール」プロジェクトに関する最新プレスリリース記事を掲載しています。</p>
+                </div>
+                <a href="https://zero-press.net/p/r-mwal1x1tref6" target="_blank" rel="noopener noreferrer" class="media-btn">
+                    <i class="fas fa-newspaper"></i> 記事を読む <i class="fas fa-external-link-alt" style="font-size: 0.9rem;"></i>
+                </a>
             </div>
         </div>
 
@@ -635,7 +713,7 @@
     <script>
         document.getElementById("year").innerText = new Date().getFullYear();
 
-        // 2026年11月10日 12:00:00 (日本時間) にチケットサイトを自動解放
+        // 2026年11月10日 12:00:00 (日本時間) チケットサイト自動解放判定
         const releaseTime = new Date("2026-11-10T12:00:00+09:00").getTime();
         const lockedBox = document.getElementById("ticket-locked");
         const unlockedBox = document.getElementById("ticket-unlocked");
@@ -646,11 +724,9 @@
             const diff = releaseTime - now;
 
             if (diff <= 0) {
-                // 11月10日 12:00以降は購入ボタンを表示
                 lockedBox.style.display = "none";
                 unlockedBox.style.display = "block";
             } else {
-                // 11月10日 12:00前はカウントダウンを表示
                 lockedBox.style.display = "block";
                 unlockedBox.style.display = "none";
 
