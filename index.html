@@ -8,8 +8,8 @@
     <meta http-equiv="Expires" content="0">
     
     <title>オタクのいちごさん 公式サイト｜身長153cmの女優コンビ</title>
-    <meta name="description" content="身長153cmの通山栞と米沢のぞみによるこだわり全開の女優コンビ「オタクのいちごさん」の公式サイト。80年代アイドルプロジェクト「恋するオルゴール」やTikTok・SNS、イベント・メディア情報をお届け！">
-    <meta name="keywords" content="オタクのいちごさん,通山栞,米沢のぞみ,恋するオルゴール,80年代アイドル,女優">
+    <meta name="description" content="身長153cmの通山栞と米沢のぞみによるこだわり全開の女優コンビ「オタクのいちごさん」の公式サイト。80年代アイドルプロジェクト「恋するオルゴール」の音楽配信やTikTok・SNS、イベント・メディア情報をお届け！">
+    <meta name="keywords" content="オタクのいちごさん,通山栞,米沢のぞみ,恋するオルゴール,80年代アイドル,女優,ハニハニ古墳,古墳フェス">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -176,6 +176,49 @@
             color: #fff;
         }
 
+        /* 音楽配信リンクボックス */
+        .music-stream-box {
+            margin-top: 35px;
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.14), rgba(255, 0, 85, 0.14));
+            border: 3px solid var(--neon-cyan);
+            border-radius: 16px;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 0 18px rgba(0, 240, 255, 0.25);
+        }
+        .stream-badge {
+            display: inline-block;
+            background: var(--accent-yellow);
+            color: #000;
+            font-weight: 900;
+            font-size: 0.9rem;
+            padding: 4px 16px;
+            border-radius: 30px;
+            margin-bottom: 10px;
+        }
+        .stream-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+            background: linear-gradient(90deg, #00c3ff, #00f0ff);
+            color: #000;
+            font-size: 1.15rem;
+            font-weight: 900;
+            padding: 15px 38px;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 3px solid #fff;
+            box-shadow: 5px 5px 0px var(--neon-pink);
+            transition: 0.2s;
+        }
+        .stream-btn:hover {
+            transform: scale(1.03) translateY(-2px);
+            box-shadow: 0 0 22px var(--neon-cyan);
+        }
+
+        /* イベントバナー */
         .event-banner {
             margin-top: 45px;
             background: linear-gradient(135deg, rgba(255, 0, 85, 0.18), rgba(0, 240, 255, 0.18));
@@ -274,39 +317,9 @@
             margin-bottom: 4px;
         }
 
-        /* チケット特設サイト連動エリア */
         .ticket-area {
             margin-top: 25px;
             text-align: center;
-        }
-        .ticket-locked-box {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px dashed var(--accent-yellow);
-            border-radius: 12px;
-            padding: 18px 15px;
-        }
-        .countdown-timer {
-            font-size: 1.25rem;
-            font-weight: 900;
-            color: var(--neon-cyan);
-            margin: 8px 0 12px 0;
-            letter-spacing: 0.05em;
-            text-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
-        }
-        .ticket-btn-disabled {
-            display: inline-block;
-            width: 100%;
-            background-color: #3a3a48;
-            color: #bbb;
-            font-size: 1.05rem;
-            font-weight: bold;
-            padding: 14px 20px;
-            border-radius: 50px;
-            border: 2px solid #666;
-            cursor: not-allowed;
-        }
-        .ticket-unlocked-box {
-            display: none;
         }
         .ticket-btn-active {
             display: inline-flex;
@@ -328,6 +341,68 @@
         .ticket-btn-active:hover {
             transform: scale(1.03) translateY(-2px);
             box-shadow: 0 0 30px var(--neon-pink), 0 0 15px var(--accent-yellow);
+        }
+
+        /* 古墳フェス・振付動画セクション */
+        .kofun-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+        }
+        .kofun-video-col {
+            flex: 1 1 420px;
+        }
+        .video-responsive {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 3px solid var(--accent-yellow);
+            box-shadow: 0 0 20px rgba(255, 213, 0, 0.35);
+            background: #000;
+        }
+        .video-responsive iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .kofun-info-col {
+            flex: 1 1 320px;
+            text-align: left;
+        }
+        .kofun-info-box {
+            background: rgba(0, 0, 0, 0.45);
+            border: 2px solid var(--neon-pink);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .youtube-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            background-color: #ff0000;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 900;
+            padding: 14px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 3px solid #fff;
+            box-shadow: 5px 5px 0px var(--neon-cyan);
+            transition: 0.2s;
+        }
+        .youtube-btn:hover {
+            transform: scale(1.03) translateY(-2px);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
         }
 
         /* メディア情報（プレスリリース）用スタイル */
@@ -484,13 +559,13 @@
             .time-grid {
                 grid-template-columns: 1fr;
             }
-            .ticket-btn-active {
-                font-size: 1.05rem;
-                padding: 14px 15px;
-            }
+            .ticket-btn-active,
+            .stream-btn,
             .media-btn {
                 width: 100%;
                 justify-content: center;
+                font-size: 1.05rem;
+                padding: 14px 15px;
             }
         }
     </style>
@@ -573,6 +648,20 @@
                 </div>
             </div>
 
+            <!-- 音楽配信リンクエリア -->
+            <div class="music-stream-box">
+                <span class="stream-badge">🎉 音楽配信スタート！</span>
+                <p style="font-size: 1.15rem; font-weight: bold; color: #fff;">
+                    各音楽配信サービスにて好評配信中！
+                </p>
+                <p style="font-size: 0.95rem; color: #b0c4de; margin-top: 5px;">
+                    Apple Music / Spotify / LINE MUSIC / Amazon Music などお好きなサービスでお聴きいただけます🎧
+                </p>
+                <a href="https://linkco.re/cznXArQn" target="_blank" rel="noopener noreferrer" class="stream-btn">
+                    <i class="fas fa-music"></i> 各配信ストアで聴く <i class="fas fa-external-link-alt" style="font-size: 0.9rem;"></i>
+                </a>
+            </div>
+
             <div class="event-banner">
                 <div class="event-sub-badge">✨ 4部作完結記念 ONE MAN LIVE ✨</div>
                 <h3>🗓️ 恋するオルゴール 卒業コンサート開催決定！</h3>
@@ -611,29 +700,48 @@
                         </div>
 
                         <div class="ticket-area">
-                            <div id="ticket-locked" class="ticket-locked-box">
-                                <div style="font-weight: bold; color: var(--accent-yellow); font-size: 1.05rem;">
-                                    🎫 11月10日(火) 12:00よりチケット発売開始！
-                                </div>
-                                <div id="countdown-display" class="countdown-timer">
-                                    発売開始までお待ちください
-                                </div>
-                                <div class="ticket-btn-disabled">
-                                    <i class="fas fa-lock"></i> 11/10 12:00 チケットサイト解放
-                                </div>
-                            </div>
-
-                            <div id="ticket-unlocked" class="ticket-unlocked-box">
-                                <p style="color: var(--accent-yellow); font-weight: bold; font-size: 1rem; margin-bottom: 10px;">
-                                    ＼ チケット特設サイトにて好評発売中！ ／
-                                </p>
-                                <a href="https://atthebeginningjy-creator.github.io/koioru-Ticket/" target="_blank" rel="noopener noreferrer" class="ticket-btn-active">
-                                    <i class="fas fa-ticket-alt"></i> チケット購入はこちら
-                                </a>
-                            </div>
+                            <p style="color: var(--accent-yellow); font-weight: bold; font-size: 1rem; margin-bottom: 10px;">
+                                ＼ チケット特設サイトにて好評発売中！ ／
+                            </p>
+                            <a href="https://atthebeginningjy-creator.github.io/koioru-Ticket/" target="_blank" rel="noopener noreferrer" class="ticket-btn-active">
+                                <i class="fas fa-ticket-alt"></i> チケット購入はこちら
+                            </a>
                         </div>
 
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 古墳フェス「ハニハニ古墳！」公式振付動画セクション -->
+        <div class="pop-card">
+            <h2>Event &amp; Movie</h2>
+            <p style="font-weight: bold; margin-bottom: 25px; font-size: 1.15rem; color: var(--accent-yellow);">
+                🗿 古墳フェスはにコット vol.15 特別ソング『ハニハニ古墳！』公式振付動画公開！🍓
+            </p>
+            <div class="kofun-wrap">
+                <div class="kofun-video-col">
+                    <div class="video-responsive">
+                        <iframe src="https://www.youtube.com/embed/6vhlbmvkUUY" title="【公式振付】ハニハニ古墳！🍓みんなで覚えて一緒に踊ろう！｜オタクのいちごさん" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="kofun-info-col">
+                    <div class="kofun-info-box">
+                        <span class="media-badge" style="margin-bottom: 12px;">OPENING ACT 出演決定！</span>
+                        <p style="font-size: 1.1rem; font-weight: bold; color: #fff; margin-bottom: 10px;">
+                            古墳フェス はにコット vol.15
+                        </p>
+                        <p style="font-size: 0.98rem; color: #f0f6fc; margin-bottom: 12px;">
+                            📅 <strong>日時：</strong>11月22日(日) 10:15〜<br>
+                            📍 <strong>会場：</strong>今城塚古墳（内濠ステージ）
+                        </p>
+                        <p style="font-size: 0.95rem; color: #b0c4de; line-height: 1.8;">
+                            はにコットのために用意した特別ソング『ハニハニ古墳！』を披露します！小さなお子様から大人の方まで楽しめるキャッチーな1曲です。ぜひ振付動画を覚えて、当日一緒に歌って踊りましょう✨
+                        </p>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=6vhlbmvkUUY" target="_blank" rel="noopener noreferrer" class="youtube-btn">
+                        <i class="fab fa-youtube" style="font-size: 1.3rem;"></i> YouTubeで振付動画を見る
+                    </a>
                 </div>
             </div>
         </div>
@@ -657,7 +765,7 @@
         </div>
 
         <div class="pop-card sns-container">
-            <h2>TikTok & SNS</h2>
+            <h2>TikTok &amp; SNS</h2>
             <div style="margin: 30px 0;">
                 <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@otakuno153" data-unique-id="otakuno153" data-embed-type="creator" style="max-width: 100%; min-width: 280px; margin: 0 auto;">
                     <section><a target="_blank" href="https://www.tiktok.com/@otakuno153?refer=creator_embed">@otakuno153</a></section>
@@ -712,38 +820,6 @@
     <script async src="https://www.tiktok.com/embed.js"></script>
     <script>
         document.getElementById("year").innerText = new Date().getFullYear();
-
-        // 2026年11月10日 12:00:00 (日本時間) チケットサイト自動解放判定
-        const releaseTime = new Date("2026-11-10T12:00:00+09:00").getTime();
-        const lockedBox = document.getElementById("ticket-locked");
-        const unlockedBox = document.getElementById("ticket-unlocked");
-        const countdownDisplay = document.getElementById("countdown-display");
-
-        function updateTicketStatus() {
-            const now = new Date().getTime();
-            const diff = releaseTime - now;
-
-            if (diff <= 0) {
-                lockedBox.style.display = "none";
-                unlockedBox.style.display = "block";
-            } else {
-                lockedBox.style.display = "block";
-                unlockedBox.style.display = "none";
-
-                const hours = Math.floor(diff / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-                const hStr = String(hours).padStart(2, '0');
-                const mStr = String(minutes).padStart(2, '0');
-                const sStr = String(seconds).padStart(2, '0');
-
-                countdownDisplay.innerText = `解放まであと ${hStr}時間${mStr}分${sStr}秒`;
-            }
-        }
-
-        updateTicketStatus();
-        setInterval(updateTicketStatus, 1000);
     </script>
 </body>
 </html>
